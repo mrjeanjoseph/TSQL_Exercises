@@ -1,2 +1,2 @@
 # TBS-Trainings
-JavaScript, JQuery, Node.JS and PL/SQL application completed during trainings at TBS.
+JavaScript, JQuery, Node.JS and PL/SQL applications completed during trainings at TBS.
