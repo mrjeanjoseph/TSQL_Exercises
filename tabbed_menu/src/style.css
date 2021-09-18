@@ -1,0 +1,32 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 20%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+
+#pap {background-color: blue;}
+#rdu {background-color: red;}
+#chr {background-color: yellow;}
+#tok {background-color: orange;}
+#par {background-color: pink;}
