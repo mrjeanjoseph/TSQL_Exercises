@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Menu</title>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+    <h2>Tabbed Menu</h2>
+
+    <div id="pap" class="tabcontent">
+        <h1>Port-au-Prince</h1>
+        <p>Port-au-Prince is the capital of Haiti</p>
+    </div>
+
+    <div id="rdu" class="tabcontent">
+        <h1>Raleigh</h1>
+        <p>Raleigh is the capital of North Carolina</p>
+    </div>
+
+    <div id="chr" class="tabcontent">
+        <h1>Charlotte</h1>
+        <p>Charlotte is a big city</p>
+    </div>
+
+    <div id="tok" class="tabcontent">
+        <h1>Tokyo</h1>
+        <p>Tokyo is the capital of Japan</p>
+    </div>
+
+    <div id="par" class="tabcontent">
+        <h1>Paris</h1>
+        <p>Paris is the capital of France</p>
+    </div>
+
+    <button class="tablink" onclick="openCity('pap', this, 'blue');" id="defaultOpen">Port-au-Prince</button>
+    <button class="tablink" onclick="openCity('rdu', this, 'red');">Raleigh</button>
+    <button class="tablink" onclick="openCity('chr', this, 'green')">Charlotte</button>
+    <button class="tablink" onclick="openCity('tok', this, 'orange')">Tokyo</button>
+    <button class="tablink" onclick="openCity('par', this, 'pink')">Paris</button>
+
+    <script src="./src/script.js"></script>
+</body>
+</html>

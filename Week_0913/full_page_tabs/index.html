@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full page Tabs</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+</head>
+<body>
+    <button class="tablink" onclick="openPage('home', this, 'red')" id="defaultOpen">Home</button>
+    <button class="tablink" onclick="openPage('news', this, 'green')">News</button>
+    <button class="tablink" onclick="openPage('contact', this, 'orange')">Contact</button>
+    <button class="tablink" onclick="openPage('abt_us', this, 'purple')">About Us</button>
+
+    <div id="home"class="tabcontent">
+        <h3>Home</h3>
+        <p>This is the main page - full of primary stuff about my company</p>
+    </div>
+    
+    <div id="news" class="tabcontent">
+        <h3>News</h3>
+        <p>This is the news page - full of news stuff about my company</p>
+    </div>
+
+    <div id="contact" class="tabcontent">
+        <h3>Contat</h3>
+        <p>This is the Contat page - full of contact information about the company</p>
+    </div>
+    
+    <div id="abt_us" class="tabcontent">
+        <h3>About Us</h3>
+        <p>This is the about us page - This is who we are and what we do</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./src/script.js"></script>
+</body>
+</html>
