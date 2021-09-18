@@ -6,11 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./src/style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>
 <body>
+    <h1>Hover Tabs</h1>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="./src/sript.js"></script>
+    <div class="tab">
+        <button class="tablinks" onmouseover="openCity(event, 'london')">London</button>
+        <button class="tablinks" onmouseover="openCity(event, 'lascahobas')">Lascahobas</button>
+        <button class="tablinks" onmouseover="openCity(event, 'petionville')">Petionville</button>
+    </div>
+
+    <div id="london" class="tabcontent">
+        <h3>London</h3>
+        <p>A beautiful english city in England. BTW, it's the capital.</p>
+    </div>
+    <div id="lascahobas" class="tabcontent">
+        <h3>Lascahobas</h3>
+        <p>A beautiful haitian city in Haiti. BTW, it's where I am from.</p>
+    </div>
+    <div id="petionville" class="tabcontent">
+        <h3>Petionville</h3>
+        <p>A beautiful Haitian city in Haiti. BTW, it belong to the elite of Haiti.</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <script src="./src/script.js"></script>
+
+
 </body>
 </html>
