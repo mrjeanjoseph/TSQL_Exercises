@@ -33,3 +33,18 @@ body {
 #navbar a.active {
     background-color: #04AA6D;
 }
+
+.content {
+    padding: 16px;
+    padding-bottom: 2000px; /*I added this one for space at the bottom*/
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
