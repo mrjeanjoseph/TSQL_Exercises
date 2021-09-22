@@ -1,28 +1,39 @@
-
-
-.project-area {
-    padding: 4rem;
+body{
+    background: yellowgreen;
 }
 
-.project-area .button-group button {
-    background: transparent;
-    border: none;
-    font: normal 500 16px/130px;
-    text-transform: uppercase;
+.filter {
+    text-align: center;
+    margin: 2rem auto;
 }
 
-.project-area .button-group button + button {
-    padding-left: 3rem;
+.filter a {
+    text-align: center;
+    padding: .7rem 1rem;
+    background: crimson;
+    color: white;
+    text-decoration: none;
 }
 
-.project-area .grid .our-project >.title h4{
-    font: normal 700 25px/12px;
+.filter a.current { background: orangered; }
+
+.boxGroup { text-align: center; }
+
+.boxGroup div {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    /* background-color: aliceblue; */
 }
 
-button:focus,
-button:active
-button:hover
-.btn.active{
-    outline: 0px !important;
-    box-shadow: none !important;
+.one{
+    background-color: #6CA1FF;
+}
+
+.two{
+    background-color: #4165a3;
+}
+
+.three{
+    background-color: #8eabdd;
 }
