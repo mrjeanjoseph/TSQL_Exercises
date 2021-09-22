@@ -1,0 +1,28 @@
+
+
+.project-area {
+    padding: 4rem;
+}
+
+.project-area .button-group button {
+    background: transparent;
+    border: none;
+    font: normal 500 16px/130px;
+    text-transform: uppercase;
+}
+
+.project-area .button-group button + button {
+    padding-left: 3rem;
+}
+
+.project-area .grid .our-project >.title h4{
+    font: normal 700 25px/12px;
+}
+
+button:focus,
+button:active
+button:hover
+.btn.active{
+    outline: 0px !important;
+    box-shadow: none !important;
+}
