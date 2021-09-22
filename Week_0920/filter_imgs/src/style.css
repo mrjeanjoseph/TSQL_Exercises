@@ -23,17 +23,16 @@ body{
     width: 250px;
     height: 250px;
     display: inline-block;
-    /* background-color: aliceblue; */
 }
 
 .one{
-    background-color: #6CA1FF;
+    background-color: red;
 }
 
 .two{
-    background-color: #4165a3;
+    background-color: white;
 }
 
 .three{
-    background-color: #8eabdd;
+    background-color: blue;
 }
