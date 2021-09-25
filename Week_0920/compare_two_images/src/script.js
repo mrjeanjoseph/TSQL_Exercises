@@ -38,27 +38,27 @@ function initComparisons() {
             window.addEventListener("touchmove", slideMove);
         }
 
-        function slideFinish(){
+        function slideFinish() {
             clicked = 0;
         }
 
         function slideMove(e) {
             var pos;
-            if(clicked ==0) return false;
+            if (clicked == 0) return false;
             pos = getCursorPos(e);
 
-            if(pos < 0) pos = 0;
-            if(pos > 0) pos = w;
+            if (pos < 0) pos = 0;
+            if (pos > w) pos = w;
             slide(pos);
         }
 
         function getCursorPos(e) {
-            var a, x =0;
+            var a, x = 0;
 
             e = (e.changedTouches) ? e.changedTouches[0] : e;
             a = img.getBoundingClientRect();
             x = e.pageX - a.left;
-            x = x-window.pageXOffset;
+            x = x - window.pageXOffset;
             return x;
         }
         function slide(x) {

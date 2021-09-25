@@ -14,8 +14,8 @@
 }
 
 .img-comp-img img {
-    /* display: block; */
-    vertical-align: middle;
+    display: block;
+    /* vertical-align: middle; */
 }
 
 .img-comp-slider {
@@ -24,7 +24,7 @@
     cursor: ew-resize;
     width: 40px;
     height: 40px;
-    background-color: #2196F3;
-    opacity: 0.7;
+    background-color: #f5fafd;
+    opacity: .3;
     border-radius: 50%;
 }
