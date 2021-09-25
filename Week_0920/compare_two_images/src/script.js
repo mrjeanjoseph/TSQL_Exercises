@@ -1,3 +1,5 @@
+initComparisons();
+
 
 function initComparisons() {
     var x, i;
@@ -38,6 +40,30 @@ function initComparisons() {
 
         function slideFinish(){
             clicked = 0;
+        }
+
+        function slideMove(e) {
+            var pos;
+            if(clicked ==0) return false;
+            pos = getCursorPos(e);
+
+            if(pos < 0) pos = 0;
+            if(pos > 0) pos = w;
+            slide(pos);
+        }
+
+        function getCursorPos(e) {
+            var a, x =0;
+
+            e = (e.changedTouches) ? e.changedTouches[0] : e;
+            a = img.getBoundingClientRect();
+            x = e.pageX - a.left;
+            x = x-window.pageXOffset;
+            return x;
+        }
+        function slide(x) {
+            img.style.width = x + "px";
+            slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
         }
     }
 }
