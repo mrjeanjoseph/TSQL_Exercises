@@ -38,9 +38,12 @@ function productAddToTable() {
     "<td>" + $("#productName").val() + "</td>" +
     "<td>" + $("#introDate").val() + "</td>" +
     "<td>" + $("#url").val() + "</td>" +
-    "<td>" + "<button type='button'
-                    onclick='btn btn-default'>"
-    "</tr");
+    "<td>" + 
+    "<button type='button' onclick='productDelete(this);' class='btn btn-secondary'>" +            
+    //"<span class='glyphicon glyphicon-remove'/>" +
+    "X</button>" +
+    "</td>" +
+    "</tr>");
 }
 
 function formClear() {
@@ -49,7 +52,11 @@ function formClear() {
     $("#url").val("");
 }
 
+function productDelete(ctl) {
+    $(ctl).parents("tr").remove();
+}
+
 $(document).ready(function() {
-    productsAdd();
+    //productsAdd();
     productUpdate();
 })
