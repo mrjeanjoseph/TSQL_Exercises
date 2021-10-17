@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript CRUD</title>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./src/style.css">
-
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
 </head>
+
 <body>
     <h1 id="title"></h1>
 
@@ -26,19 +22,23 @@
         <tbody id="countries"></tbody>
     </table>
 
-    
+
     <form action="javascript:void(0);" method="post" onsubmit="app.Add();">
         <input type="text" id="add-name" placeholder="New Country">
         <input type="submit" value="Add">
     </form>
 
+    <div id="spoiler" role="aria-hidden">
+        <form action="javascript:void(0);" method="POST" id="saveEdit">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Edit">
+            <a onclick="CloseInput()" aria-label="Close">&#10006</a>
+        </form>
+    </div>
+
 
     <!-- Custom JavaScript File -->
     <script src="./src/script.js"></script>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 
-const pageTitle = 'Project Title goes here!';
+const pageTitle = 'List of countries';
 document.getElementById("title").innerHTML = pageTitle;
 
 
@@ -27,9 +27,9 @@ var app = new function () {
                 data += '<tr>';
                 data += '<td>' + this.countries[i] + '</td';
                 data += '</tr>';
+                data += '<td>'
             }
         }
-
         this.Count(this.countries.length);
         return this.el.innerHTML = data;
     };
@@ -48,5 +48,9 @@ var app = new function () {
         }
     }
 };
+
+function CloseInput() {
+    document.getElementById('spoiler').style.display = 'none'
+}
 
 app.FetchAll();
