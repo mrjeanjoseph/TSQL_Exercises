@@ -27,11 +27,37 @@ var app = new function () {
                 data += '<tr>';
                 data += '<td>' + this.countries[i] + '</td';
                 data += '</tr>';
-                data += '<td>'
+                data += '<td><button onclick="app.Edit(' + i + ')">Edit</button></td>';
+                data += '<td><button onclick="app.Delete(' + i + ')">Delete</button></td>';
             }
         }
         this.Count(this.countries.length);
         return this.el.innerHTML = data;
+    };
+
+    this.Delete = function(item) {
+        // Delete the current row
+    }
+
+    this.Edit = function (item) {
+        var el = document.getElementById('edit-name');
+        // Display value in the field
+        el.value = this.countries[item];
+        // Display fields
+        document.getElementById('spoiler').style.display = 'block';
+        self = this;
+
+        document.getElementById('saveEdit').onsubmit = function () {
+            // Get value
+            var country = el.value;
+            if (country) {
+                // Edit value
+                self.countries.splice(item, 1, country.trim());
+                // Display a new list
+                self.FetchAll();
+                CloseInput();
+            }
+        }
     };
 
     this.Add = function () {

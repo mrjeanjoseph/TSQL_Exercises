@@ -1,3 +1,7 @@
 #spoiler{
     display: none;
 }
+
+#closeIt{
+    cursor: pointer;
+}
