@@ -10,32 +10,43 @@ var app = new function () {
         var el = document.getElementById('counter');
         var name = 'country';
 
-        if (data > 1) {
-            name = 'countries';
-            el.innerHTML = data + '' + name;
+        if (data) {
+            if (data > 1) {
+                name = 'countries';
+            }
+            el.innerHTML = data + ' ' + name;
         } else {
-            this.el.innerHTML = 'No ' + name;
+            el.innerHTML = 'No ' + name;
         }
-    }
+    };
+
+    this.FetchAll = function () {
+        var data = '';
+        if (this.countries.length > 0) {
+            for (i = 0; i < this.countries.length; i++) {
+                data += '<tr>';
+                data += '<td>' + this.countries[i] + '</td';
+                data += '</tr>';
+            }
+        }
+
+        this.Count(this.countries.length);
+        return this.el.innerHTML = data;
+    };
 
     this.Add = function () {
-        alert('add something');
-    }
-
-};
-
-this.FetchAll = function () {
-    var data = '';
-    if (this.countries.length > 0) {
-        for (i = 0; i < this.countries.length; i++) {
-            data += '<td>';
-            data += '<td>' + this.countries[i] + '</td';
-            data += '<t/d>';
+        el = document.getElementById('add-name');
+        //getting the value
+        var country = el.value;
+        if (country) {
+            //add the new value
+            this.countries.push(country.trim());
+            //reset input value
+            this.el.value = '';
+            //Display the new list
+            this.FetchAll();
         }
     }
-
-    this.Count(this.countries.length);
-    return this.el.innerHTML = data;
-}
+};
 
 app.FetchAll();
