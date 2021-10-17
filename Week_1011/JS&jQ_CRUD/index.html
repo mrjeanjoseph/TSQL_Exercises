@@ -24,59 +24,56 @@
 </head>
 
 <body>
-    <h1 id="title"></h1>
-    <p>If you click on the "Hide" button, I will disappear.</p>
-
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2>List Products</h2>
+            <div class="col-sm-12">
+                <h2>List of Products</h2>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <table id="productTable" class="table table-bordered table-condensed table-stripped">
                     <thead>
                         <tr>
-                            <th>Product Name</th>
-                            <th>Introduction Date</th>
+                            <th>Product Names</th>
+                            <th>Intro Dates</th>
                             <th>URL</th>
-                            <th>Delete</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
             </div>
         </div>
 
-        <h4 class="card-title">Product Information</h4>
-        <hr style="width: 225px;">
-        <div class="row">
-            <div class="col-sm-6">
+        <div class="card">
+            <h5 class="card-header">Product Information</h5>
+            <div class="card-body">
                 <div class="mb-3">
                     <label for="productName" class="form-label">Product Name</label>
                     <input type="text" class="form-control" id="productName">
+                </div>
+                <div class="mb-3">
                     <label for="introDate" class="form-label">Intro Date</label>
-                    <input type="text" class="form-control" id="introDate">
+                    <input type="date" class="form-control" id="introDate">
+                </div>
+                <div class="mb-3">
                     <label for="url" class="form-label">URL</label>
-                    <input type="text" class="form-control" id="url">                  
-            </div>
-            <button 
-            type="button" 
-            id="updateButton" 
-            class="btn btn-primary"
-            onclick="productUpdate();">Add</button>
+                    <input type="url" class="form-control" id="url" required>
+                </div>
+                <button type="button" 
+                id="updateButton"
+                class="btn btn-primary"
+                onclick="productUpdate();">Add to List</button>
             </div>
         </div>
-
-
     </div>
 
     <!-- Custom JavaScript File -->
-    
+
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
-    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="./src/script.js"></script>
 
     <!-- JavaScript Bootstrap CDN -->
