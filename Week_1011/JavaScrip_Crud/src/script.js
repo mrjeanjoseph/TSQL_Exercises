@@ -37,7 +37,10 @@ var app = new function () {
 
     this.Delete = function(item) {
         // Delete the current row
-    }
+        this.countries.splice(item, 1);
+        // Display the new list
+        this.FetchAll();
+    };
 
     this.Edit = function (item) {
         var el = document.getElementById('edit-name');
