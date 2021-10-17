@@ -32,11 +32,21 @@ function productsAddToTable() {
         $("#productTable").append("<tbody></tbody>");
     }
 
-    $("#productTable tbody").append("<tr>" +
+    $("#productTable tbody").append(
+        "<tr>" +
         "<td>" + $("#productName").val() + "</td>" +
         "<td>" + $("#introDate").val() + "</td>" +
-        "<td>" + $("#url").val() + "</td>" +    
+        "<td>" + $("#url").val() + "</td>" + 
+        "<td>" +
+        "<button type='button' onclick='productDelete(this);'" +
+        "class='btn btn-default'>" +
+        "<<i class='fa-regular fa-delete-left'></i>" +
+        "</button></td>" +
     "</tr>");
+}
+
+function productDelete(ctl) {
+    $(ctl).parents("tr").remove();
 }
 
 function formClear() {
