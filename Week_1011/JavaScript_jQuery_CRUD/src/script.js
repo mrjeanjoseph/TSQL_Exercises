@@ -12,7 +12,7 @@ function productsAdd() {
         "<td>wwww.javascriptprojs.com</td>" +
         "</td>");
 
-        $("#productTable tbody").append("<tr>" +
+    $("#productTable tbody").append("<tr>" +
         "<td>My Second JavaScript Project</td>" +
         "<td>10/19/2021</td>" +
         "<td>wwww.javascriptprojs.com</td>" +
@@ -20,30 +20,80 @@ function productsAdd() {
 }
 
 function productUpdate() {
-    if($("#productName").val() != null && $("#productName").val() != '') {
-        productsAddToTable();
+    if ($("#productName").val() != null && $("#productName").val() != '') {
+        //productAddToTable();
+        productBuildTableRow();
         formClear();
         $("#productName").focus();
     }
 }
 
-function productsAddToTable() {
-    if($("#productTable tbody").length == 0) {
+function productAddToTable() {
+    // First check if a <tbody> tag exists, add one if not
+    if ($("#productTable tbody").length == 0) {
         $("#productTable").append("<tbody></tbody>");
     }
 
+    // Append product to the table
     $("#productTable tbody").append(
         "<tr>" +
         "<td>" + $("#productName").val() + "</td>" +
         "<td>" + $("#introDate").val() + "</td>" +
-        "<td>" + $("#url").val() + "</td>" + 
+        "<td>" + $("#url").val() + "</td>" +
         "<td>" +
-        "<button type='button' onclick='productDelete(this);'" +
-        "class='btn btn-default'>" +
-        "<<i class='fa-regular fa-delete-left'></i>" +
-        "</button></td>" +
-    "</tr>");
+        "<button type='button' onclick='productDelete(this);'" +                
+                " class='btn btn-default'>" +
+        "<span class='glyphicon glyphicon-remove' />" +
+        "</button>" +
+        "</td>" +
+        "</tr>");
 }
+
+
+function productBuildTableRow() {
+    var ret = "<tr>" +
+        "<td>" +
+        "<button type='button' onclick='productDisplay(this);' class='btn btn-default'>" +
+        "<span class='glyphicon glyphicon-edit' />" +
+        "</button>" +
+        "</td>" +
+        "<td>" + $("#productName").val() + "</td>" +
+        "<td>" + $("#introDate").val() + "</td>" +
+        "<td>" + $("#url").val() + "</td>" +
+        "<td>" +
+        "<button type='button' onclick='productDelete(this);' class='btn btn-default'>" +
+        "<span class='glyphicon glyphicon-remove' />" +
+        "</button>" +
+        "</td>" +
+        "</tr>"
+
+    return ret;
+}
+
+var _row = null;
+function productDisplay(ctl){
+    _row = $(ctl).parents("tr");
+    var cols = _row.children("td");
+
+    $("#productName").val($(cols[1]).text());
+    $("#introDate").val($(cols[2]).text());
+    $("#url").val($(cols[3]).text());
+
+    $("#updateButton").text("Update");
+}
+
+function productUpdate() {
+    if($("#updateButton").text() == "Update") {
+        productUpdateInTable();
+    } else {
+        productAddToTable();
+    }
+    formClear();
+    $("#productName").focus();
+}
+
+
+
 
 function productDelete(ctl) {
     $(ctl).parents("tr").remove();
