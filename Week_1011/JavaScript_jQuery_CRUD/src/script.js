@@ -1,6 +1,4 @@
 
-
-
 function productsAdd() {
     if ($("#productTable tbody").length == 0) {
         $("#productTable").append("<tbody></tbody");
@@ -21,10 +19,18 @@ function productsAdd() {
 
 function productUpdate() {
     if ($("#productName").val() != null && $("#productName").val() != '') {
-        //productAddToTable();
-        productBuildTableRow();
-        formClear();
+        if($("#updateButton").text() == "Update") {
+            productUpdateInTable();
+        } else {
+            productAddToTable();
+        }
+        
+        formClear();    
         $("#productName").focus();
+
+        //productAddToTable();
+       // productBuildTableRow();
+
     }
 }
 
@@ -51,11 +57,15 @@ function productAddToTable() {
 
 
 function productBuildTableRow() {
+    if ($("#productTable tbody").length == 0) {
+        $("#productTable").append("<tbody></tbody>");
+    }
+
     var ret = "<tr>" +
         "<td>" +
         "<button type='button' onclick='productDisplay(this);' class='btn btn-default'>" +
         "<span class='glyphicon glyphicon-edit' />" +
-        "</button>" +
+        "x</button>" +
         "</td>" +
         "<td>" + $("#productName").val() + "</td>" +
         "<td>" + $("#introDate").val() + "</td>" +
@@ -82,17 +92,16 @@ function productDisplay(ctl){
     $("#updateButton").text("Update");
 }
 
-function productUpdate() {
-    if($("#updateButton").text() == "Update") {
-        productUpdateInTable();
-    } else {
-        productAddToTable();
-    }
+
+function productUpdateInTable() {
+    $(_row).after(productBuildTableRow());
+
+    $(_row).remove();
+
     formClear();
-    $("#productName").focus();
+
+    $("#updateButton").text("Add");
 }
-
-
 
 
 function productDelete(ctl) {
