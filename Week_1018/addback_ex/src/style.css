@@ -1,0 +1,20 @@
+p,div{
+    margin: 5px;
+    padding: 5px;
+}
+.border{
+    border:2px solid red;
+}
+
+.background{
+    background: yellow;
+}
+
+.left,.right{
+    width: 45%;
+    float: left;
+}
+
+.right{
+    margin-left:3%;
+}
