@@ -2,8 +2,8 @@
 const pageTitle = 'Project Title goes here!';
 document.getElementById("title").innerHTML = pageTitle;
 
-$("p").add("div").addClass("widget");
-var pdiv = $("p").add("div");
+//$("p").add("div").addClass("widget");
+//var pdiv = $("p").add("div");
 
 // $("li").add("h1").add("p").css("background-color", "red");
 
@@ -11,6 +11,14 @@ var pdiv = $("p").add("div");
 
 //$("li").add("<p id='new'> new paragraph </p>").css("background-color","red");
 
-$("div").css("border","2px solid red")
-        .add("p")
-        .css("background","yellow");
+// $("div").add("span").add("section")
+//         .css("border","2px solid red")
+//         .add("p")
+//         .css("background","yellow");
+
+
+//$( "p" ).clone().add( "<span>Again</span>" ).appendTo( document.body );
+
+//$( "p" ).add( document.getElementsByClassName( "a" )).css( "background","yellow");
+
+var 
