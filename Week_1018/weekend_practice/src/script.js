@@ -21,4 +21,19 @@ document.getElementById("title").innerHTML = pageTitle;
 
 //$( "p" ).add( document.getElementsByClassName( "a" )).css( "background","yellow");
 
-var 
+var collection = $( "p" );
+
+collection = collection.add( document.getElementsByClassName( "a ") );
+
+collection.css( "background","pink");
+
+
+console.log("Hello".charAt(0));
+
+console.log("Hello".toUpperCase());
+
+console.log("Hello".toLowerCase());
+
+console.log("Hello".replace(/e|i/g,"x"));
+
+console.log("1,2,3".split(","));
