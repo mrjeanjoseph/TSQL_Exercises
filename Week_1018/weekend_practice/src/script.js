@@ -46,12 +46,25 @@ document.getElementById("title").innerHTML = pageTitle;
 
 // $("<b>" + Title + "</b>").appendTo("body");
 
-$("#clickme").click(function () {
-    $("#book").animate({
-        opacity: 0.25,
-        left: "+=50",
-        height: "toggle"
-    }, function () {
-        console.log("Animation complete!");
-    });
-});
+// $("#clickme").click(function () {
+//     $("#book").animate({
+//         opacity: 0.25,
+//         left: "+=50",
+//         height: "toggle"
+//     }, 5000, function () {
+//         console.log("Animation complete!");
+//     });
+// });
+
+
+// $("#clickme").click(function(){
+//     $("#book").toggle()
+// })
+
+
+$("li.third-item")
+    .nextAll()
+    .addBack()
+    .css("background-color","green");
+
+    
