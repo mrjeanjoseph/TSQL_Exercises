@@ -21,19 +21,37 @@ document.getElementById("title").innerHTML = pageTitle;
 
 //$( "p" ).add( document.getElementsByClassName( "a" )).css( "background","yellow");
 
-var collection = $( "p" );
+// var collection = $( "p" );
 
-collection = collection.add( document.getElementsByClassName( "a ") );
+// collection = collection.add( document.getElementsByClassName( "a ") );
 
-collection.css( "background","pink");
+// collection.css( "background","pink");
 
 
-console.log("Hello".charAt(0));
+// console.log("Hello".charAt(0));
 
-console.log("Hello".toUpperCase());
+// console.log("Hello".toUpperCase());
 
-console.log("Hello".toLowerCase());
+// console.log("Hello".toLowerCase());
 
-console.log("Hello".replace(/e|i/g,"x"));
+// console.log("Hello".replace(/e|i/g,"x"));
 
-console.log("1,2,3".split(","));
+// console.log("1,2,3".split(","));
+
+// console.log("Hello".length);
+
+// console.log("".length);
+
+// var Title = "Project Two";
+
+// $("<b>" + Title + "</b>").appendTo("body");
+
+$("#clickme").click(function () {
+    $("#book").animate({
+        opacity: 0.25,
+        left: "+=50",
+        height: "toggle"
+    }, function () {
+        console.log("Animation complete!");
+    });
+});
