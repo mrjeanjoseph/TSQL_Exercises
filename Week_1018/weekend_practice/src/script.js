@@ -62,9 +62,20 @@ document.getElementById("title").innerHTML = pageTitle;
 // })
 
 
-$("li.third-item")
-    .nextAll()
-    .addBack()
-    .css("background-color","green");
+// $("li.third-item")
+//     .nextAll()
+//     .addBack()
+//     .css("background-color","green");
 
     
+// $(".inner").css("border","1px solid red");
+
+$( "p" ).after(function() {
+    return "<div>" + this.className + "</div>";
+});
+
+var $newdiv1 = $ ( "<div id='object1'></div>" ),
+    newdiv2 = document.createElement( "div" ),
+    existingdiv1 = document.getElementById( "foo" );
+
+$( "p" ).first().after( $newdiv1, [ newdiv2, existingdiv1 ] );
