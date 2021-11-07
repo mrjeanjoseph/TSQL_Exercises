@@ -4,7 +4,7 @@ let app = express();
 let router = express.Router();
 
 router.get('/', function(req, res, next) {
-    res.send('Ayisyen Pie');
+    res.send('Ayisyen Pie Dous');
 });
 
 app.use('/api/', router);
