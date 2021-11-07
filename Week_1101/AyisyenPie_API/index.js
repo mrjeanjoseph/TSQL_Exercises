@@ -43,7 +43,7 @@ router.get('/search',function(req, res, next) {
     });
 });
 
-//Creating a GET/id to return a single pie
+//GET/id to return a single pie
 router.get('/:id', function(req, res, next) {
     pieRepo.getById(req.params.id, function(data){
         if(data){
@@ -68,6 +68,20 @@ router.get('/:id', function(req, res, next) {
         next(err);
     });
 });
+
+//POST to insert a single pie data
+router.post('/',function(req, res, next){
+    pieRepo.insert(req.body, function(data){
+        res.status(201).json({
+            "status": 201,
+            "statusText":"Created",
+            "message":"New Pie Data added.",
+            "data":data
+        });
+    },function(err){
+        next(err);
+    });
+})
 
 app.use('/api/', router);
 

@@ -58,7 +58,7 @@ let pieRepo = {
                 reject(err);
             } else {
                 let newPie = JSON.parse(data);
-                newPie.push(data);
+                newPie.push(newData);
                 fs.writeFile(FILE_NAME, JSON.stringify(newPie), function(err){
                     if(err){
                         reject(err);
