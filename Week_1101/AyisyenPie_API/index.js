@@ -23,6 +23,51 @@ router.get('/', function (req, res, next) {
     });
 });
 
+//Create GET/search?id=name=str to search for pies by 'id' and/or by 'name'
+router.get('/search',function(req, res, next) {
+    let searchOject = {
+        "id":req.query.id,
+        "name":req.query.name
+    };
+
+    pieRepo.search(searchOject, function(data) {
+        res.status(200).json({
+            "status":200,
+            "statusText":"OK",
+            "message":"All pies retrieved.",
+            "data":data
+        });
+    },function(err){
+        next(err);
+    });
+});
+
+//Creating a GET/id to return a single pie
+router.get('/:id', function(req, res, next) {
+    pieRepo.getById(req.params.id, function(data){
+        if(data){
+            res.status(200).json({
+                "status": 200,
+                "statusText": "OK",
+                "message": "Gato nimewo '" + req.params.id + "' an valab.",
+                "data": data
+            });
+        } else {
+            res.status(404).json({
+                "status": 404,
+                "statusText": "NOT FOUND!",
+                "message": "Nimewo Gato '" + req.params.id + "' sa a, pa valab ",
+                "error": {
+                    "code": "NOT FOUND!",
+                    "Message": "Nimewo Gato '" + req.params.id + "' sa a, pa valab "
+                }
+            });
+        }
+    }, function(err) {
+        next(err);
+    });
+});
+
 app.use('/api/', router);
 
 var server = app.listen(5000, function () {
