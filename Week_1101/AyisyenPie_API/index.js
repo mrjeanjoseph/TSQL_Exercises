@@ -7,6 +7,7 @@ let router = express.Router();
 //Creating an array of items to be passed in
 //let pies = pieRepo.get();
 
+app.use(express.json());
 
 router.get('/', function (req, res, next) {
     //Here I return the array of object

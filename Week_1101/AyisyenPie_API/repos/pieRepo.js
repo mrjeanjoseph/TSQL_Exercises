@@ -26,7 +26,7 @@ let pieRepo = {
         });
     },
 
-    //Getting a single piece of pie data by id and/or name
+    //Handler for GET METHOD - Getting a single piece of pie data by id/name
     search: function(searchObject, resolve, reject){
         fs.readFile(FILE_NAME, function(err, data) {
             if(err) {
@@ -47,6 +47,25 @@ let pieRepo = {
                        (searchObject.name ? onePie.name.toLowerCase().indexOf(searchObject.name.toLowerCase()) >= 0 : true));                       
                 }
                 resolve(searchPie);
+            }
+        });
+    },
+
+    //Handler for POST METHOD - Posting a single piece of pie data
+    insert: function(newData, resolve, reject){
+        fs.readFile(FILE_NAME, function(err, data) {
+            if(err){
+                reject(err);
+            } else {
+                let newPie = JSON.parse(data);
+                newPie.push(data);
+                fs.writeFile(FILE_NAME, JSON.stringify(newPie), function(err){
+                    if(err){
+                        reject(err);
+                    }else{
+                        resolve(newData);
+                    }
+                });
             }
         });
     }
