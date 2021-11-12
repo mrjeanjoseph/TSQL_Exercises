@@ -1,4 +1,5 @@
 let fs = require('fs');
+const { stringify } = require('querystring');
 
 const FILE_NAME = './assets/piesData.json';
 
@@ -68,6 +69,28 @@ let pieRepo = {
                 });
             }
         });
+    },
+
+    //Handler for Update Method - Partially updating pie data
+    update: function(newData, id, resolve, reject){
+        fs.readFile(FILE_NAME, function (err, data){
+            if(err){
+                reject(err);
+            } else {
+                let pies = JSON.parse(data);
+                let pie = pies.find(p => p.id == id);
+                if(pie){
+                    Object.assign(pie,newData);
+                    fs.writeFile(FILE_NAME, stringify(pies), function(err){
+                        if(err){
+                            reject(err);
+                        } else {
+                            resolve(newData);
+                        }
+                    })
+                }
+            }
+        })
     }
 };
 
