@@ -9,6 +9,7 @@ let router = express.Router();
 
 app.use(express.json());
 
+//Get all data
 router.get('/', function (req, res, next) {
     //Here I return the array of object
     pieRepo.get(function (data) {
@@ -70,13 +71,13 @@ router.get('/:id', function(req, res, next) {
 });
 
 //POST to insert a single pie data
-router.post('/',function(req, res, next){
+router.post('/', function(req, res, next){
     pieRepo.insert(req.body, function(data){
         res.status(201).json({
             "status": 201,
             "statusText":"Created",
             "message":"New Pie Data added.",
-            "data":data
+            "data": data
         });
     },function(err){
         next(err);
