@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Confiti Pie",
+        "name": "Wouj Confiti Pie",
         "wholePrice": 29.99,
         "slicePrice": 5.29,
         "sliceCalorie": 67,
@@ -38,13 +38,5 @@
         "slicePrice": 5.29,
         "sliceCalorie": 28,
         "imgURL": "imgs/grenadiapie.jpg"
-    },
-    {
-        "id": 6,
-        "name": "Shadek Pie",
-        "wholePrice": 17.99,
-        "slicePrice": 5.29,
-        "sliceCalorie": 28,
-        "imgURL": "imgs/shadekpie.jpg"
     }
 ]
