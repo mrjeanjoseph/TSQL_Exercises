@@ -84,30 +84,29 @@ router.post('/', function(req, res, next){
     });
 })
 
-router.put('/:id', function(req,res, next){
+router.put('/:id', function(req, res, next) {
     pieRepo.getById(req.params.id, function(data){
         if(data){
-            //Attempt to update the data
-            pieRepo.update(req.body, req.params.id, function(data){
+            pieRepo.update(req.body, req.params.id,function(data){
                 res.status(200).json({
-                    "status": 200,
-                    "statusText": "OK",
-                    "message": "Pie '"+ req.params.id +"' updated.",
-                    "data":data
+                    "status":200,
+                    "statusText":"OK",
+                    "message":"Pie '" + req.params.id + "' updated.",
+                    "data": data
                 });
             });
         } else {
             res.status(404).json({
                 "status": 404,
-                "statusText": "Not Found",
+                "statusText":"Not Found..,",
                 "message":"The pie '" + req.params.id + "' could not be found.",
-                "error": {
+                "error":{
                     "Code":"NOT_FOUND",
                     "message":"The pie '" + req.params.id + "' could not be found."
                 }
             });
-        }        
-    },function(err){
+        }
+    }, function(err){
         next(err);
     });
 })
