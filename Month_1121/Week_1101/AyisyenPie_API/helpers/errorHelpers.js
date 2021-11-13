@@ -1,9 +1,24 @@
+let logRepo = require('../repos/logRepo');
 
 let errorHelpers = {
     logErrorsToConsole: function(err, req, res, next){
         console.log("Log Entry: " + JSON.stringify(errorHelpers.errorBuilder(err)));
         console.log("*".repeat(80));
         next(err);
+    },
+    logErrorsToFile: function(err, req, res, next){
+        let errorObject = errorHelpers.errorBuilder(err);
+        errorObject.requestInfo = {
+            "hostname":req.hostname,
+            "path":req.path,
+            "app":req.app,
+        }
+        logRepo.write(errorObject, function(data){
+            console.log(data);
+        }, function(err){
+            console.error(err);
+        });
+        next(err)
     },
     clientErrorHandler: function(err, req, res, next){
         if(req.xhr){

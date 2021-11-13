@@ -158,6 +158,7 @@ router.patch('/:id', function(req, res, next){
 app.use('/api/', router);
 
 app.use(errorHelper.logErrorsToConsole);//configure exception logger to console
+app.use(errorHelper.logErrorsToFile);//Configure exception logger to file
 app.use(errorHelper.clientErrorHandler);//Configure client error handler
 app.use(errorHelper.errorHandler);//Configure catch-all exception middleware last
 
