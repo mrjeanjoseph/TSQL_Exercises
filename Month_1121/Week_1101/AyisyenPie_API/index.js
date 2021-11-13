@@ -139,6 +139,21 @@ router.delete('/:id', function(req, res, next){
     });
 })
 
+router.patch('/:id', function(req, res, next){
+    pieRepo.getById(req.params.id, function(data){
+        if(data){
+            pieRepo.update(req.body, req.params.id, function(data){
+                res.status(200).json({
+                    "status":200,
+                    "statusText": "OK",
+                    "message":"Pie '" + req.params.id + "' patched",
+                    "data":data
+                });
+            });
+        }
+    })
+})
+
 app.use('/api/', router);
 
 var server = app.listen(5000, function () {
