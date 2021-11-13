@@ -156,6 +156,32 @@ router.patch('/:id', function(req, res, next){
 
 app.use('/api/', router);
 
+function errorBuilder(err){
+    return{
+        "status":500,
+        "statusText":"Internal Server Error",
+        "message":err.message,
+        "error":{
+            "errno":err.errno,
+            "call":err.syscall,
+            "code":"INTERNAL_SERVER_ERROR",
+            "message":err.message
+        }
+    };
+}
+
+//Configure exception logger
+app.use(function(err, req, res, next){
+    console.log(errorBuilder(err));
+    next(err);
+});
+
+//Configure exception middleware last
+app.use(function(err, req, res, next){
+    //Notice there are 4 parameters - for error handling
+    res.status(500).json(errorBuilder(err));
+});
+
 var server = app.listen(5000, function () {
     console.log('Node server is running on http://localhost:5000...,');
 });

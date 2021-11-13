@@ -1,7 +1,7 @@
 let fs = require('fs');
 const { stringify } = require('querystring');
 
-const FILE_NAME = './assets/piesData.json';
+const FILE_NAME = './assets/piesData2.json';
 
 let pieRepo = {
     get: function(resolve, reject) {

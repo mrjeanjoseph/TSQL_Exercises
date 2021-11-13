@@ -1,0 +1,32 @@
+
+let errorHelpers = {
+    logErrorsToConsole: function(err, req, res, next){
+        console.log("Log Entry: " + JSON.stringify(errorHelpers.errorBuilder(err)));
+        console.log("*".repeat(80));
+        next(err);
+    },
+    clientErrorHandler: function(err, req, res, next){
+        if(req.xhr){
+            res.status(500).json({
+                "status":500,
+                "statusText":"Internal Server Error",
+                "message":"XMLHttpRequest error",
+                "error":{
+                    "errno":0,
+                    "call":"XHLHttpRequest Call",
+                    "code":"INTERNAL_SERVER_ERROR",
+                    "message":"XMLHttpRequest error"
+                }
+            });
+        } else {
+            next(err);
+        }
+    }, 
+    errorHandler:function(err, req, res, next){
+        res.status(500).json(errorHelpers.errBuilder(err));
+    }, 
+    errorBuilder:function(err){
+        return
+    }
+
+}
