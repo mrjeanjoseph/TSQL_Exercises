@@ -13,7 +13,7 @@ let errorHelpers = {
                 "message":"XMLHttpRequest error",
                 "error":{
                     "errno":0,
-                    "call":"XHLHttpRequest Call",
+                    "call":"XMLHttpRequest Call",
                     "code":"INTERNAL_SERVER_ERROR",
                     "message":"XMLHttpRequest error"
                 }
@@ -23,10 +23,21 @@ let errorHelpers = {
         }
     }, 
     errorHandler:function(err, req, res, next){
-        res.status(500).json(errorHelpers.errBuilder(err));
+        res.status(500).json(errorHelpers.errorBuilder(err));
     }, 
     errorBuilder:function(err){
-        return
+        return{
+            "status":500,
+            "statusText":"Internal Server Error",
+            "message":err.message,
+            "error":{
+                "errno":err.errno,
+                "call":err.syscall,
+                "code":"INTERNAL_SERVER_ERROR",
+                "message":err.message
+            }
+        };
     }
+};
 
-}
+module.exports = errorHelpers;

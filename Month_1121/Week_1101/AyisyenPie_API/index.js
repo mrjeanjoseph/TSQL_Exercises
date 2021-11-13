@@ -1,6 +1,7 @@
 let express = require('express');
 let app = express();
 let pieRepo = require('./repos/pieRepo');
+let errorHelper = require('./helpers/errorHelpers');
 
 //use express Router Object
 let router = express.Router();
@@ -153,9 +154,15 @@ router.patch('/:id', function(req, res, next){
         }
     })
 })
-
+//Configuring router and prefix them with /api/
 app.use('/api/', router);
 
+app.use(errorHelper.logErrorsToConsole);//configure exception logger to console
+app.use(errorHelper.clientErrorHandler);//Configure client error handler
+app.use(errorHelper.errorHandler);//Configure catch-all exception middleware last
+
+/* Commenting this code because a reusable module is used instead.
+//Handling Errors
 function errorBuilder(err){
     return{
         "status":500,
@@ -181,6 +188,7 @@ app.use(function(err, req, res, next){
     //Notice there are 4 parameters - for error handling
     res.status(500).json(errorBuilder(err));
 });
+*/
 
 var server = app.listen(5000, function () {
     console.log('Node server is running on http://localhost:5000...,');
