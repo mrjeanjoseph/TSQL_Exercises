@@ -14,11 +14,10 @@ let errorHelpers = {
             "app":req.app,
         }
         logRepo.write(errorObject, function(data){
-            console.log(data);
-        }, function(err){
+            console.log(data);            
+        },function(err){
             console.error(err);
         });
-        next(err)
     },
     clientErrorHandler: function(err, req, res, next){
         if(req.xhr){

@@ -1,5 +1,4 @@
 let fs = require('fs');
-const { stringify } = require('querystring');
 
 const FILE_NAME = './assets/piesData2.json';
 
