@@ -2,13 +2,17 @@ let express = require('express');
 let app = express();
 let pieRepo = require('./repos/pieRepo');
 let errorHelper = require('./helpers/errorHelpers');
+let cors = require('cors');
 
 //use express Router Object
 let router = express.Router();
 //Creating an array of items to be passed in
 //let pies = pieRepo.get();
 
+//configure middleware to support JSON data parsing
 app.use(express.json());
+//configure cors
+app.use(cors());
 
 //Get all data
 router.get('/', function (req, res, next) {

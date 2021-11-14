@@ -1,6 +1,6 @@
 let fs = require('fs');
 
-const FILE_NAME = './assets/piesData2.json';
+const FILE_NAME = './assets/piesData.json';
 
 let pieRepo = {
     get: function(resolve, reject) {
