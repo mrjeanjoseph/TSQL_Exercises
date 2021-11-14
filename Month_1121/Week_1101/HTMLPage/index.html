@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Sample</title>
+</head>
+<body>
+    <h1>Pie Sample</h1>
+    <button onclick="getAllPies();">Get all Pies</button>
+
+    <script>
+        'use strict';
+
+        const URL = "http://localhost:5000/api/";
+        function getAllPies(){
+            console.log("GET ALL");
+
+            let req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if(this.readyState === XMLHttpRequest.DONE && 
+                this.status === 200) {
+                    let response = JSON.parse(this.response);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    console.log(response.data);
+                }
+            };
+            req.open("GET", URL);
+            req.send();
+        }
+        
+    </script>    
+</body>
+</html>

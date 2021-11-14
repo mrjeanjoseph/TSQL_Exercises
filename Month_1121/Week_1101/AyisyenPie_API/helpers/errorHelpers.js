@@ -18,6 +18,7 @@ let errorHelpers = {
         },function(err){
             console.error(err);
         });
+        next(err);
     },
     clientErrorHandler: function(err, req, res, next){
         if(req.xhr){
