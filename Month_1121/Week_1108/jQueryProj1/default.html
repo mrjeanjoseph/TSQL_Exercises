@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html,
+        body {
+            width: 90%;
+            margin: auto;
+            padding-top: 10px;
+            background-color: black;
+        }
+
+        #menubar {
+            text-align: center;
+        }
+
+        .menuItems {
+            width: 150px;
+            height: 50px;
+            background-color: powderblue;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .pageStructure {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            background-color: whitesmoke;
+            text-align: center;
+        }
+
+        #mainPage {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="siteBody">
+        <section id="menubar">
+            <div class="menuItems">
+                <h4>Menu One</h4>
+            </div>
+
+            <div class="menuItems">
+                <h4>Menu Two</h4>
+            </div>
+
+            <div class="menuItems">
+                <h4>Menu Three</h4>
+            </div>
+
+            <div class="menuItems">
+                <h4>Menu Four</h4>
+            </div>
+        </section>
+
+        <section id="pageBody">
+            <div id="mainPage" class="pageStructure">
+                <h1>Page One</h1>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="pageStructure">
+                <h1>Page Two</h1>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="pageStructure">
+                <h1>Page Three</h1>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="pageStructure">
+                <h1>Page Four</h1>
+                <p>ipsum sepat dolor sit amet.</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <script>
+        $(document).ready(function () {
+//DRY
+            $('.menuItems').on('click',function(){
+                var pageBodyRedo = $(this).attr('')
+            })
+
+
+            //for page one
+            var menuOne = $('#menubar').children().eq(0);
+            var pageOne = $('#pageBody').children().eq(0);
+            menuOne.on('click', function () {    
+                pageTwo.hide();
+                pageThree.hide();
+                pageFour.hide();
+
+                pageOne.show().css("background-color", "yellow");
+
+            });
+
+            //for page two
+            var menuTwo = $('#menubar').children().eq(1);
+            var pageTwo = $('#pageBody').children().eq(1);
+            menuTwo.on('click', function () {
+                pageOne.hide();
+                pageThree.hide();
+                pageFour.hide();
+                
+                pageTwo.show();
+            });
+
+            //for page three
+            var menuThree = $('#menubar').children().eq(2);
+            var pageThree = $('#pageBody').children().eq(2);
+            menuThree.on('click', function () {
+                pageOne.hide();
+                pageTwo.hide();
+                pageFour.hide();
+                
+                pageThree.show();
+
+            });
+
+            //for page three
+            var menuFour = $('#menubar').children().eq(3);
+            var pageFour = $('#pageBody').children().eq(3);
+            menuFour.on('click', function () {
+                pageOne.hide();
+                pageTwo.hide();
+                pageThree.hide();
+
+                pageFour.show();
+            });
+
+        });
+
+    </script>
+</body>
+
+</html>
