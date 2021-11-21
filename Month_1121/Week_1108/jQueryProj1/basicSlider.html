@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Basic Slider</title>
+
+    <style>
+        html,
+        body {
+            background-color: #333;
+        }
+
+        #slider {
+            width: 720px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        #slider .slides {
+            display: block;
+            width: 6000px;
+            height: 400px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #slider .slide {
+            float: left;
+            list-style-type: none;
+            width: 720px;
+            height: 400px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="text-muted">jQuery Basic Slider</h1>
+        </div>
+
+        <div id="slider">
+            <ul class="slides">
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1634022104045-e0e21b3e0bc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt=""></li>
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1636237693155-9a57c81c6077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt=""></li>
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1628382862234-7dd33c0ca7e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80"
+                        alt=""></li>
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1626790557421-c6123fc61e7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=875&q=80"
+                        alt=""></li>
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1627639162953-1530c1612077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt=""></li>
+                <li class="slide"><img
+                        src="https://images.unsplash.com/photo-1634022104045-e0e21b3e0bc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                        alt=""></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        'use strict';
+
+        $(document).ready(function () {
+            //setInterval
+            //animate margin-left
+            var width = 720,
+                speed = 1000,
+                pause = 1000,
+                currentSlide = 1;
+            var interval;
+
+            //cache the DOM
+            var $slider = $('#slider'),
+                $slideContainer = $slider.find('.slides'),
+                $slides = $slideContainer.find('.slide');
+
+            function startSlider() {
+                interval = setInterval(function () {
+                    $slideContainer.animate({ 'margin-left': '-=' + width }, speed,
+                        function () {
+                            //if it's last slide, go to position 1 (0px);
+                            //listen for mouseenter and pause
+                            currentSlide++;
+                            if (currentSlide === $slides.length) {
+                                currentSlide = 1;
+                                $slideContainer.css('margin-left', 0);
+                            }
+                        });
+                }, pause);
+            }
+
+            //start slider
+            function stopSlider(){
+                clearInterval(interval);
+            }
+
+            //resume on mouseleave
+            $slider.on('mouseenter', 'stopSlider').on('mouseleave', 'startSlider');
+            startSlider();
+
+        });
+
+    </script>
+
+</body>
+
+</html>

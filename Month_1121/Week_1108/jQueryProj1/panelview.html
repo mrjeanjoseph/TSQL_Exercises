@@ -116,17 +116,15 @@
             //To remove add and remove the active class within the tabs
 
             $('.tab-panels .tabs li').on('click', function () {
+                var $panel = $(this).closest('.tab-panels');
 
-                var panel = $(this).closest('.tab-panels');
-                $(this).addClass('active');
-
-                $('.tab-panels .tabs li.active').removeClass('active');
+                $panel.find('.tabs li.active').removeClass('active');
                 $(this).addClass('active');
 
                 //figure out which panel to show
                 var panelToShow = $(this).attr('rel');
 
-                $('.tab-panels .panel.active').slideUp(100, showNextPanel);
+                $panel.find('.panel.active').slideUp(100, showNextPanel);
 
                 function showNextPanel() {
                     $(this).removeClass('active');
