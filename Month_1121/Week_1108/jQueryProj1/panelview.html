@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,14 +15,15 @@
             width: 90%;
             margin: auto;
             padding-top: 10px;
-            background-color: rgba(0, 0, 0, 0.774);
+            background-color: #333;
         }
 
-        .tab-panels ul{
+        .tab-panels ul {
             margin: 0;
             padding: 0;
         }
-        .tab-panels ul li{
+
+        .tab-panels ul li {
             list-style-type: none;
             display: inline-block;
             background: #999;
@@ -32,78 +34,110 @@
             font-weight: 200;
             cursor: pointer;
         }
-        .tab-panels ul li:hover{
-            color:#fff;
-            background: #666;
-        }
-        .tab-panels ul li.active{
+
+        .tab-panels ul li:hover {
             color: #fff;
             background: #666;
         }
-        .tab-panels .panel{
+
+        .tab-panels ul li.active {
+            color: #fff;
+            background: #666;
+        }
+
+        .tab-panels .panel {
             display: none;
             background: #c9c9c9;
             padding: 30px;
             border: 2px solid rgb(51, 3, 3);
             border-radius: 0 0 10px 10px;
         }
-        .tab-panels .panel.active{
+
+        .tab-panels .panel.active {
             display: block;
         }
-
     </style>
 </head>
-<body>
 
+<body>
 
     <div class="tab-panels">
         <ul class="tabs">
-            <li class="active">panel1</li>
-            <li>panel2</li>
-            <li>panel3</li>
-            <li>panel4</li>
-            <li>panel5</li>
+            <li rel="panel1" class="active">panel1</li>
+            <li rel="panel2">panel2</li>
+            <li rel="panel3">panel3</li>
+            <li rel="panel4">panel4</li>
+            <li rel="panel5">panel5</li>
         </ul>
 
         <div id="panel1" class="panel active">
-            content1<br/>
-            content1<br/>
-            content1<br/>
-            content1<br/>
-            content1<br/>
+            content1<br />
+            content1<br />
+            content1<br />
+            content1<br />
+            content1<br />
         </div>
         <div id="panel2" class="panel">
-            content2<br/>
-            content2<br/>
-            content2<br/>
-            content2<br/>
-            content2<br/>
+            content2<br />
+            content2<br />
+            content2<br />
+            content2<br />
+            content2<br />
         </div>
 
         <div id="panel3" class="panel">
-            content3<br/>
-            content3<br/>
-            content3<br/>
-            content3<br/>
-            content3<br/>
+            content3<br />
+            content3<br />
+            content3<br />
+            content3<br />
+            content3<br />
         </div>
 
         <div id="panel4" class="panel">
-            content4<br/>
-            content4<br/>
-            content4<br/>
-            content4<br/>
-            content4<br/>
+            content4<br />
+            content4<br />
+            content4<br />
+            content4<br />
+            content4<br />
         </div>
 
         <div id="panel5" class="panel">
-            content5<br/>
-            content5<br/>
-            content5<br/>
-            content5<br/>
-            content5<br/>
+            content5<br />
+            content5<br />
+            content5<br />
+            content5<br />
+            content5<br />
         </div>
     </div>
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //To remove add and remove the active class within the tabs
+
+            $('.tab-panels .tabs li').on('click', function () {
+
+                var panel = $(this).closest('.tab-panels');
+                $(this).addClass('active');
+
+                $('.tab-panels .tabs li.active').removeClass('active');
+                $(this).addClass('active');
+
+                //figure out which panel to show
+                var panelToShow = $(this).attr('rel');
+
+                $('.tab-panels .panel.active').slideUp(100, showNextPanel);
+
+                function showNextPanel() {
+                    $(this).removeClass('active');
+
+                    $('#' + panelToShow).slideDown(100, function () {
+                        $(this).addClass('active');
+                    });
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
