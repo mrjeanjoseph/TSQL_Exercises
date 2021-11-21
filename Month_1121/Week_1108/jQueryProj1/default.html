@@ -38,7 +38,7 @@
             text-align: center;
         }
 
-        #mainPage1 {
+        #mainPage1, .makeActive{
             display: block;
         }
     </style>
@@ -86,13 +86,13 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+
     <script>
         $(document).ready(function () {
 
-            $('.menuItems').on('click', function () {
-               // var menuId = $(this).attr('data-menuId');
-                $('#mainPage3').toggle();
-            });
+            $('.menuItems').on('click', function(){
+                $('#pageBody').remove();
+            })
 
         });
     </script>
