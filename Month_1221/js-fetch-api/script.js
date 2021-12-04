@@ -19,18 +19,30 @@ function createBreedList(breedList) {
     document.getElementById("breed").innerHTML = `
     <select onchange="loadByBreed(this.value)">
         <option>Choose a dog Breed</option>
-        ${Object.keys(breedList).map(function(breed){
-            return `<option>${breed}</option>`
-        }).join("")}
+        ${Object.keys(breedList).map(function (breed) {
+        return `<option>${breed}</option>`
+    }).join("")}
     </select>
     `;
 }
 
-async function loadByBreed(breed){
-    if(breed != "Choose a dog Breed"){
+async function loadByBreed(breed) {
+    if (breed != "Choose a dog Breed") {
         //alert("You chose a " + breed);
         const response = await fetch(`https://dog.ceo/api/breed/${breed}/images`);
         const data = await response.json();
-        console.log(data)
+        //console.log(data)
+        createSlideshow(data.message);
     }
+}
+
+function createSlideshow(images) {
+    let currentPosition = 0;
+    document.getElementById("slideshow").innerHTML = `
+    <div class="slide" style="background-image: url('${images[0]}');"></div>
+    <div class="slide" style="background-image: url('${images[1]}');"></div>
+    `
+    currentPosition += 2;
+    setInterval(nextSlide, 3000)
+    //console.log(images)
 }
