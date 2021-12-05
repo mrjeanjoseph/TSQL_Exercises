@@ -6,57 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery Panel</title>
-
-    <style>
-        /* missing code */
-
-        html,
-        body {
-            width: 90%;
-            margin: auto;
-            padding-top: 10px;
-            background-color: #333;
-        }
-
-        .tab-panels ul {
-            margin: 0;
-            padding: 0;
-        }
-
-        .tab-panels ul li {
-            list-style-type: none;
-            display: inline-block;
-            background: #999;
-            margin: 0;
-            padding: 3px 10px;
-            border-radius: 10px 10px 0 0;
-            color: #fff;
-            font-weight: 200;
-            cursor: pointer;
-        }
-
-        .tab-panels ul li:hover {
-            color: #fff;
-            background: #666;
-        }
-
-        .tab-panels ul li.active {
-            color: #fff;
-            background: #666;
-        }
-
-        .tab-panels .panel {
-            display: none;
-            background: #c9c9c9;
-            padding: 30px;
-            border: 2px solid rgb(51, 3, 3);
-            border-radius: 0 0 10px 10px;
-        }
-
-        .tab-panels .panel.active {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -111,31 +61,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            //To remove add and remove the active class within the tabs
-
-            $('.tab-panels .tabs li').on('click', function () {
-                var $panel = $(this).closest('.tab-panels');
-
-                $panel.find('.tabs li.active').removeClass('active');
-                $(this).addClass('active');
-
-                //figure out which panel to show
-                var panelToShow = $(this).attr('rel');
-
-                $panel.find('.panel.active').slideUp(100, showNextPanel);
-
-                function showNextPanel() {
-                    $(this).removeClass('active');
-
-                    $('#' + panelToShow).slideDown(100, function () {
-                        $(this).addClass('active');
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
