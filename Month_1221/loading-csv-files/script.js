@@ -9,6 +9,7 @@ $(document).ready(function () {
                 <table class="table table-bordered table-striped">
                 `;
                 for (let count = 0; count < employee_data.length; count++) {
+                    let cell_data = employee_data[count].split(",");
                     cell_data += 'tr';
                     for (let cell_count = 0; cell_count < cell_data.length; cell_count++) {
                         if (count === 0) {
@@ -20,6 +21,7 @@ $(document).ready(function () {
                     table_data += '</tr>';
                 }
                 table_data +='</table>';
+                $('#employee_table').html(table_data);
             }
         })
     })
