@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV to JSON</title>
+</head>
+
+<body>
+    <div align="center">
+        <input type="file" id="filename">
+        <div>
+            <p>Select Delimiter</p>
+            <select id="delimiter">
+                <option value="," id="comma">Comma: ","</option>
+                <option value="|" id="pipe">Pipe: "|"</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <textarea cols="50" rows="10" disabledId="json" class="textareasize"></textarea>
+        <div>
+            <button id="convert">Download JSON result</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

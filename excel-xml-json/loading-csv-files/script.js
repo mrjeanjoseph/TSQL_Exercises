@@ -4,7 +4,8 @@ $(document).ready(function () {
             url: "employee.csv",
             dataType: "text",
             success: function (data) {
-                loadTableData(data);
+                console.log(data); // 
+               // loadTableData(data);
             }
         });
     });
