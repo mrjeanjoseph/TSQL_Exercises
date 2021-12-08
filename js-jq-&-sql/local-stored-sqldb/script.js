@@ -1,8 +1,14 @@
 
 var db = openDatabase("itemDB", "1.0", "itemDB", 65535);
 
-function createTable(){
-        $("#create").click(function () {
+function DisplayConfirmation(errMessage, customError){
+    var messageElement = `<label style="color:red;">${errMessage}</label>`;
+    var errorMessage = $("#quantity").append(messageElement);
+    return errorMessage;
+}
+
+function createTable() {
+    $("#create").click(function () {
         db.transaction(function (transaction) {
             var sql = "CREATE TABLE items " +
                 "(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
@@ -10,6 +16,8 @@ function createTable(){
                 "quantity INT(5) NOT NULL)";
             transaction.executeSql(sql, undefined, function () {
                 alert("Table created Successfully");
+                //DisplayConfirmation("Table created Successfully","");
+                $("input #quantity").text("Text");
             }, function () {
                 alert("An error occurred while create table");
             })
@@ -17,8 +25,8 @@ function createTable(){
     });
 }
 
-function deleteTableData(){
-        $("#remove").click(function () {
+function deleteTableData() {
+    $("#remove").click(function () {
         if (!confirm("Are you sure to delete this table?", "")) return;;
         db.transaction(function (transaction) {
             var sql = "DROP TABLE items";
@@ -31,8 +39,8 @@ function deleteTableData(){
     });
 }
 
-function insertDataIntoTable(){
-        $("#insert").click(function () {
+function insertDataIntoTable() {
+    $("#insert").click(function () {
         var item = $("#item").val();
         var qty = $("#quantity").val();
         db.transaction(function (transaction) {
@@ -47,16 +55,11 @@ function insertDataIntoTable(){
     });
 }
 
-$(document).ready(function () {
-
-createTable();
-deleteTableData();
-insertDataIntoTable();
-
+function fetchDataFromDB() {
     $("#list").click(function () {
         $("#table-data").children().remove();
         db.transaction(function (transaction) {
-            var sql = "SELECT * FROM items ORDER BY id DESC";
+            var sql = "SELECT * FROM items ORDER BY id";
             transaction.executeSql(sql, undefined, function (transaction, result) {
                 if (result.rows.length) {
                     for (let data = 0; data < result.rows.length; data++) {
@@ -85,5 +88,11 @@ insertDataIntoTable();
             });
         });
     });
+}
 
+$(document).ready(function () {
+    createTable();
+    deleteTableData();
+    insertDataIntoTable();
+    fetchDataFromDB();
 });
