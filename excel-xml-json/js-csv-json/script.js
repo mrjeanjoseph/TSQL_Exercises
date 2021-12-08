@@ -1,5 +1,15 @@
 
-function getData() {
+$(document).ready(function() {
+    $("#app-container").on({
+        click: function(){
+            $("input").click();
+            getdata(getCSVFile);
+            console.log("getting the file");
+        }
+    },"#input");
+})
+
+function getData(getCSVFile) {
     fetch("./data.csv").then(response => {
         return response.text();
     }).then(data => {
