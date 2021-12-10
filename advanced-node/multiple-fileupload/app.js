@@ -57,5 +57,38 @@ app.post('/single', async (req, res, next) => {
     }
 })
 
+app.post('/multiple', async (req, res, next) => {
+    try{
+        const files = req.files.mFiles;
+
+        //This wawy will not work because await cannot match the asyn above
+        // files.forEach(file => {
+        //     const savePath = path.join(__dirname, 'public','uploads', file.name)
+        //     await file.mv(savePath)
+        // })
+
+
+        //This way works
+        // let promises = [];
+        // files.forEach(file => {
+        //     const savePath = path.join(__dirname, 'public','uploads', file.name)
+        //     promises.push(file.mv(savePath));
+        // });
+
+        //This way works too - save as above
+        const promises = files.map((file) => {
+            const savePath = path.join(__dirname, 'public','uploads', file.name)
+            return file.mv(savePath);
+        })
+        await Promise.all(promises);
+
+        res.redirect('/')
+
+    } catch (error){
+        console.log(error);
+        res.send('Error uploading file');
+    }
+})
+
 var port = 1700;
 app.listen(port, () => console.log(`listening on ${port}.`));
