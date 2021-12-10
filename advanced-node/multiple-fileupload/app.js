@@ -11,7 +11,7 @@ app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: path.join(__dirname, 'tmp'),
     createParentPath: true,
-    limits: {fileSize: 1024}
+    limits: { fileSize: 1024 * 1024 * 1024 }
 }));
 
 app.get('/', async (req, res, next) => {
@@ -23,7 +23,7 @@ function randomStr(length) {
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
     for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));            
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
 }
@@ -39,6 +39,13 @@ app.post('/single', async (req, res, next) => {
         const fileName = randomStr(5) + path.extname(file.name);
 
         const savePath = path.join(__dirname, 'public', 'uploads', fileName)
+        if (file.truncated) {
+           // throw new Error('File ' + fileName + 'size is too big');
+            throw new Error('File size is too big');
+        }
+        if(file.mimetype !== 'image/jpeg') {
+            throw new Error('Only jpges are supported')
+        }
         await file.mv(savePath);
         //res.redirect('/')
         res.send('FILE UPLOADED');
