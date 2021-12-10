@@ -1,16 +1,16 @@
 export default class KanbanAPI {
 
     //Vanilla JS CRUD
-    static getItems(columnId){
+    static getItems(columnId) {
         const column = read().find(column => column.id == columnId);
 
-        if(!column){
-            return[];
+        if (!column) {
+            return [];
         }
         return column.items
     }
 
-    static insertItem(columnId, content){
+    static insertItem(columnId, content) {
         const data = read();
         const column = data.find(column => column.id == columnId);
         const item = {
@@ -18,13 +18,37 @@ export default class KanbanAPI {
             content
         };
 
-        if(!column){
+        if (!column) {
             throw new Error("Column does not exits.");
         }
         column.items.push(item);
         save(data);
 
         return item;
+    }
+
+    static updateItem(itemId, newProps) {
+        const data = read();
+        const [item, currentColumn] = (() => { // There maybe an error here! 
+            for (const column of data) {
+                const item = column.items.find(item => item.id == itemId);
+
+                if (item) {
+                    return [item, column];
+                }
+            }
+        })();
+        if (!item) {
+            throw new Error("Item not found.");
+        }
+
+        item.content = newProps.content === undefined ? item.content : newProps.content;
+        console.log(currentColumn);
+
+        if (newProps.columnId !== undefined && newProps.position !== undefined) {
+            const targetColumn = data.find(column => column.id == newProps.columnId);
+            console.log(targetColumn);
+        }
     }
 }
 
