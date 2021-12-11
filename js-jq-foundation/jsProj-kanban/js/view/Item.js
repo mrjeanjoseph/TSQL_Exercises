@@ -1,3 +1,4 @@
+import KanbanAPI from "../api/KanbanAPI.js";
 export default class Item {
     constructor(id, content) {
         this.elements = {};
@@ -10,11 +11,36 @@ export default class Item {
 
         const onBlur = () => {
             const newContent = this.elements.input.textContent.trim();
-
+            if(newContent == this.content) {
+                return;
+            }
+            this.content = newContent;
+            KanbanAPI.updateItem(id, { content: this.content });
             // console.log(this.content);
             // console.log(newContent);
         };
         this.elements.input.addEventListener("blur", onBlur);
+
+        //This is to delete content
+        this.elements.root.addEventListener("dblclick", () => {
+            const check = confirm("Are you sure you want to delete this item");
+
+            if(check) {
+                KanbanAPI.deleteItem(id);
+
+                this.elements.input.removeEventListener("blur", onBlur);
+                this.elements.root.parentElement.removeChild(this.elements.root);
+            }
+        });
+
+        this.elements.root.addEventListener("dragstart", e => {
+            e.dataTransfer.setData("text/plain", id);
+        });
+
+        //This will prevent the id content added to the drop location
+        this.elements.input.addEventListener("drop", e => {
+            e.preventDefault();
+        });
     }
 
     static CreateRoot() {
