@@ -38,17 +38,42 @@ export default class KanbanAPI {
                 }
             }
         })();
+
         if (!item) {
             throw new Error("Item not found.");
         }
 
         item.content = newProps.content === undefined ? item.content : newProps.content;
-        console.log(currentColumn);
+        //console.log(currentColumn);
 
         if (newProps.columnId !== undefined && newProps.position !== undefined) {
             const targetColumn = data.find(column => column.id == newProps.columnId);
             console.log(targetColumn);
+
+            if (!targetColumn) {
+                throw new Error("Target Column not found");
+            }
+
+            //Delete item from its current column.items
+            currentColumn.items.splice(currentColumn.items.indexOf(item), 1);
+
+            //Move itme from its new coumn and position
+            targetColumn.items.splice(newProps.position, 0, item);
         }
+        save(data);
+    }
+
+    static deleteItem(itemId) {
+        const data = read();
+
+        for (const column of data) {
+            const item = column.items.find(item => item.id == itemId);
+
+            if (item) {
+                column.items.splice(column.items.indexOf(item), 1);
+            }
+        }
+        save(data);
     }
 }
 
