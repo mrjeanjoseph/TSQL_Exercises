@@ -13,6 +13,20 @@ export default class DropZone {
             e.preventDefault();
             dropZone.classList.add("kanban__dropzone--active");
         });
+        dropZone.addEventListener("dragleave", () => {
+            dropZone.classList.remove("kanban__dropzone--active");
+        });
+        
+        dropZone.addEventListener("drop", e => {
+            e.preventDefault();
+            dropZone.classList.add("kanban__dropzone--active");
+
+            const columnElement = dropZone.closest(".kanban__column");
+            const columnId = Number(columnElement.dataset.id);
+
+            console.log(columnElement, columnId);
+        });
+
         return dropZone;
     }
 }
