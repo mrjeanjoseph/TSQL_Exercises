@@ -2,7 +2,7 @@
     display: flex;
     padding: 30px;
     width: 750px;
-    background: #009578;
+    background: #f8c291;
     border-radius: 5px;
 }
 
@@ -38,7 +38,7 @@
     transition: background 0.15s, height 0.15s;
 }
 
-.kanban__dropzone-active{
+.kanban__dropzone--active{
     height:20px;
     background: rgba(0,0,0,0.25);
 }
