@@ -20,8 +20,9 @@ export default class Item {
                 return;
             }
             this.content = newContent;
-            KanbanAPI.updateItem(id, { content: this.content });
             // console.log(this.content);
+            
+            KanbanAPI.updateItem(id, { content: this.content });
             // console.log(newContent);
         };
         this.elements.input.addEventListener("blur", onBlur);
@@ -40,10 +41,12 @@ export default class Item {
 
         this.elements.root.addEventListener("dragstart", e => {
             e.dataTransfer.setData("text/plain", id);
+            console.log("content is being dragged");
         });
 
         //This will prevent the id content added to the drop location
         this.elements.input.addEventListener("drop", e => {
+            console.log("content was dropped");
             e.preventDefault();
         });
     }
