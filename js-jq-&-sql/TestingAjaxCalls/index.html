@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Ajax Calls</title>
+    <style>
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+        }
+
+        table th {
+            background-color: #F7F7F7;
+            color: #333;
+            font-weight: bold;
+        }
+
+        table th,
+        table td {
+            padding: 5px;
+            border-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <input type="file" id="fileUpload" />
+        <input type="button" id="upload" value="Upload" />
+    </div>
+    <br>
+    <section>
+        <div>
+            <label class="label">Timsheet Period</label>
+            <select name="ts_per" id="ts_per" class="select">
+                <option>Select</option>
+                <option value="1">Javascript</option>
+                <option value="2">PL/SQL</option>
+                <option value="3">C-Sharp</option>
+                <option value="4">Java</option>
+                <option value="5">GO-LANG</option>
+            </select><br><br>
+        </div>
+        <div>
+            <label class="label">Posting Period</label>
+            <select name="post_per" id="post_per" class="select">
+                <option>Select</option>
+                <option value="1">Jan</option>
+                <option value="2">Feb</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="5">June</option>
+            </select><br><br>
+        </div>
+    </section>
+    <hr />
+    <div id="selectedItem"></div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.7/papaparse.min.js"></script> -->
+    <script src="main.js"></script>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
-
+// Loading this file from local memory.
+//No third party libray other than jQuery
 
 $(document).ready(function () {
     $('#load_data').click(function () {
@@ -7,7 +8,7 @@ $(document).ready(function () {
             dataType: "text",
             success: function (data) {
                 console.log(data); // 
-               // loadTableData(data);
+               loadTableData(data);
             }
         });
     });
