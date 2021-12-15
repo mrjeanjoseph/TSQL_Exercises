@@ -20,10 +20,10 @@ function getTSPostingUserSelection() {
 
 
 function getUserUploadedCSVFile() {
-    var fileUpload = document.getElementById("fileUpload");
-    // var fileUpload = $("#fileUpload");
+    // var fileUpload = document.getElementById("fileUpload");
+    var fileUpload = $("#fileUpload");
     var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
-    if (regex.test(fileUpload.value.toLowerCase())) {
+    if (regex.test(fileUpload.val().toLowerCase())) {
         if (typeof (FileReader) != "undefined") {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -32,7 +32,7 @@ function getUserUploadedCSVFile() {
                 console.log(myResult);
                 csv_DOM_Table(e);
             }
-            reader.readAsText(fileUpload.files[0]);
+            reader.readAsText($("#fileUpload")[0].files[0]);
         }
     } else {
         alert("Please upload a valid CSV file.");
