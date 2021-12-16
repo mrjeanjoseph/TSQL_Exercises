@@ -18,6 +18,7 @@ app.get("/", (request, response) => {
 app.post("/formData", [
     check('name')
     .not().isEmpty()
+    //Resume at 32:09 on the video
 ], (request, response) => {
     const errors = validationResult(request);
 

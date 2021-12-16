@@ -24,3 +24,13 @@ form{
     bottom: 10px;
     right: 10px;
 }
+
+.errorContainer{
+    background: #DDAAAA;
+    padding: 2px;
+    margin-bottom: 25px;
+    display: none;
+}
+.error{
+    color:#E03D3D;
+}

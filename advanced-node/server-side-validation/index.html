@@ -7,15 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Validation</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
 
 <body>
     <h1>Server-Side</h1>
     <h2>Form Validation</h2>
 
-    <div class="container">
-        <form action="">
+    <section class="container">
+        <div class="errorContainer">
+            <ul class="error"></ul>
+        </div>
+        <form>
             <div>
                 <div class="label">
                     <label for="">Name</label>
@@ -26,8 +28,8 @@
             </div>
             <button class="submit">Submit</button>
         </form>
-    </div>
-    <script src="public/js/client.js"></script>
+    </section>
+    <script src="/js/client.js"></script>
 </body>
 
 </html>

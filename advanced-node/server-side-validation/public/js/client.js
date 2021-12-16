@@ -20,6 +20,13 @@ function sendData(e) {
     fetch("http://localhost:999/formData", params)
     .then(response => response.json())
     .then(data => {
+        let error = document.querySelector(".error");
+        
+        document.querySelector(".errorContainer").style.display = "block";
+        
+        data.errors.forEach(function(err) {
+            error.innerHTML += `<li>${err.message}</li>`;
+        });
         console.log(data);
     })
     .catch(err => console.log(err))
