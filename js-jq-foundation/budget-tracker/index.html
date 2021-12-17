@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starter Templates</title>    
-    <link rel="stylesheet" href="css/style.css">
+    <title>Budget Tracker App</title>
+    <link rel="stylesheet" href="src/stylesheet.css">
 </head>
-<body>
-    
 
-    <!-- Script file here -->    
-    <script src="script.js"></script>
+<body>
+
+    <div class="app">
+        <table class="budget-tracker">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="entries">
+                <tr>
+                    <td><input class="input input-date" type="date"></td>
+                    <td><input class="input input-description" type="text" placeholder="Description"></td>
+                    <td>
+                        <select name="" class="input input-type">
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                    </td>
+                    <td><input class="input input-amount" type="number"></td>
+                    <td><button class="delete-entry" type="button">&#10005;</button></td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <td colspan="5" class="controls"><button type="button" class="new-entry">New Entry</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="5" class="summary"><strong>Total: <span class="total">$0.00</span></strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+
+    <!-- Script file here -->
+    <script type="module" src="src/index.js"></script>
 </body>
+
 </html>
