@@ -69,9 +69,17 @@ const SortObj = sortobj => {
     return obj;
 }
 
+//Create dynamic Element
+const customHTMLElement = (tagname, appendTo, fn) => {
+    const element = document.createElement(tagname);
+    if(appendTo) appendTo.appendChild(element);
+    if(fn) fn(element);
+}
+
 
 export default productdb;
 export {
     bulkcreate,
-    getData
+    getData,
+    customHTMLElement 
 };

@@ -1,5 +1,5 @@
 
-import productdb, { bulkcreate, getData } from "./module.js"
+import productdb, { bulkcreate, getData, customHTMLElement } from "./module.js"
 
 let db = productdb("productDB", {
     products: `++id, name, seller, price`
@@ -43,12 +43,31 @@ btncreate.onclick = (event) => {
 btnread.onclick = table;
 
 function table() {
-    const tbody = document.createElement("tbody")
+    const tbody = document.createElement("tbody");
+    //reading data from the db
+    getData(db.products, (data) => {
+        //console.log(data);
+
+        if(data){
+            customHTMLElement("tr", tbody, tr => {
+                for(const value in data) {
+                    customHTMLElement("td", tr, td => {
+                        td.textContent = data[value];
+                        console.log(td.textContent);
+                    })
+                }
+            })
+        }
+    })
+    // customHTMLElement("td", tbody,(td) => {
+    //     console.log(td);
+    //     console.log(tbody)
+    // });
 
     //This is too time consuming
-    let td = document.createElement("td");
-    console.log(td);
-    tbody.appendChild(td);
-    console.log(tbody);
+    // let td = document.createElement("td");
+    // console.log(td);
+    // tbody.appendChild(td);
+    // console.log(tbody);
 }
 
