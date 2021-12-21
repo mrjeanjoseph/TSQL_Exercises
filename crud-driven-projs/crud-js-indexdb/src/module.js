@@ -1,30 +1,29 @@
 
+
 const productdb = (dbname, table) => {
-    //Create db
+    //create database
 
     const db = new Dexie(dbname);
     db.version(1).stores(table);
     db.open();
 
-    /*
-    const db = new Dexie("moduledb");
-    db.version(1).stores({
-        friends: `name, age`
-    })*/
-
+    // const db = new Dexie('myDb');
+    // db.version(1).stores({
+    //     friends: `name, age`
+    // })
     return db;
 }
 
-//insert function
+//insert function 
 const bulkcreate = (dbtable, data) => {
     let flag = empty(data);
     if (flag) {
         dbtable.bulkAdd([data]);
-        console.log("data inserted successfully");
+        console.log("Data has been saved successfully!");
     } else {
-        console.log("Data is either not provided or incomplete. Please provide data...,")
+        console.log("Please provide valid data")
     }
-    return flag
+    return flag;
 }
 
 //check textbox validation
@@ -41,24 +40,29 @@ const empty = object => {
     return flag;
 }
 
+//Get data from db
 const getData = (dbtable, fn) => {
     let index = 0;
     let obj = {};
 
     dbtable.count((count) => {
+        // console.log(count);
         if (count) {
             dbtable.each(table => {
                 //console.log(table);
-                // console.log(SortObj(table));
-                obj = SortObj(table);
-                fn(obj, index++)
+
+                obj = Sortobj(table);
+                //console.log(obj);
+                fn(obj, index++);
             })
-        } else (fn(0));
+        } else {
+            fn(0);
+        }
     })
 }
 
 //Sort objects
-const SortObj = sortobj => {
+const Sortobj = sortobj => {
     let obj = {};
     obj = {
         id: sortobj.id,
@@ -69,17 +73,11 @@ const SortObj = sortobj => {
     return obj;
 }
 
-//Create dynamic Element
-const customHTMLElement = (tagname, appendTo, fn) => {
+const createEle = (tagname, appendTo, fn) => {
     const element = document.createElement(tagname);
-    if(appendTo) appendTo.appendChild(element);
-    if(fn) fn(element);
+    if (appendTo) appendTo.appendChild(element);
+    if (fn) fn(element);
 }
 
-
 export default productdb;
-export {
-    bulkcreate,
-    getData,
-    customHTMLElement 
-};
+export { bulkcreate, getData, createEle }
