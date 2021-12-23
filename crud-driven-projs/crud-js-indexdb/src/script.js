@@ -5,8 +5,8 @@ import productdb, { bulkcreate, getData, createEle } from './module.js'
 // });
 
 window.onload = () => {
-    getId(userid)
     table()
+    getId(userid)
 }
 
 function getId(textboxid) {
@@ -57,6 +57,7 @@ btncreate.onclick = (event) => {
         userid.value = "";
     });
     table();
+    getId(userid)
 
     let msgadded = document.querySelector(".msgadded");
     getMsg(flag, msgadded)
@@ -76,13 +77,13 @@ btnupdate.onclick = () => {
             //let get = updated ? "data updated" : "Could not update data";
             //console.log(get);
             let get = updated ? true : false;
-            let updatedmsg = document.querySelector(".updatedmsg");
-            getMsg(get, updatedmsg);
+            let msgupdated = document.querySelector(".msgupdated");
+            getMsg(get, msgupdated);
+            prodname.value = seller.value = price.value = "";
         })
     }
 
     table();
-    prodname.value = seller.value = price.value = "";
 }
 
 btndelete.onclick = () => {
@@ -92,6 +93,10 @@ btndelete.onclick = () => {
     });
     db.open();
     table();
+    getId(userid);
+
+    let msgdeleted = document.querySelector(".msgdeleted");
+    getMsg(true, msgdeleted)
 }
 
 
