@@ -73,8 +73,11 @@ btnupdate.onclick = () => {
             seller: seller.value,
             price: price.value
         }).then((updated) => {
-            let get = updated ? "data updated" : "Could not update data";
-            console.log(get);
+            //let get = updated ? "data updated" : "Could not update data";
+            //console.log(get);
+            let get = updated ? true : false;
+            let updatedmsg = document.querySelector(".updatedmsg");
+            getMsg(get, updatedmsg);
         })
     }
 
@@ -170,7 +173,7 @@ function deletebtn(event) {
 
 function getMsg(flag, element) {
     if (flag) {
-        element.className + "movedown";
+        element.className += "movedown";
 
         setTimeout(() => {
             element.classList.forEach(classname => {
