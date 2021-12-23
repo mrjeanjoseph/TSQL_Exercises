@@ -57,6 +57,9 @@ btncreate.onclick = (event) => {
         userid.value = "";
     });
     table();
+
+    let msgadded = document.querySelector(".msgadded");
+    getMsg(flag, msgadded)
 }
 
 //create event on btn read button
@@ -172,7 +175,7 @@ function getMsg(flag, element) {
         setTimeout(() => {
             element.classList.forEach(classname => {
                 classname == "movedown" ? undefined : element.classList.remove("movedown");
-            })
+            });
         }, 4000);
     }
 }
