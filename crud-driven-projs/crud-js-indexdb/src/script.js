@@ -9,7 +9,7 @@ window.onload = () => {
     table()
 }
 
-function getId(textboxid){
+function getId(textboxid) {
     getData(db.products, data => {
         textboxid.value = data.id + 1 || 1;
     })
@@ -135,7 +135,7 @@ function table() {
                 })
             })
         } else {
-            notfound.textContent = "No Found"
+            notfound.textContent = "No record found in the database"
         }
     })
 
@@ -163,4 +163,16 @@ function deletebtn(event) {
     let id = parseInt(event.target.dataset.id);
     db.products.delete(id);
     table();
+}
+
+function getMsg(flag, element) {
+    if (flag) {
+        element.className + "movedown";
+
+        setTimeout(() => {
+            element.classList.forEach(classname => {
+                classname == "movedown" ? undefined : element.classList.remove("movedown");
+            })
+        }, 4000);
+    }
 }
