@@ -1,8 +1,19 @@
 import productdb, { bulkcreate, getData, createEle } from './module.js'
 
-document.addEventListener("DOMContentLoaded", () => {
+// document.addEventListener("DOMContentLoaded", () => {
+//     table()
+// });
+
+window.onload = () => {
+    getId(userid)
     table()
-});
+}
+
+function getId(textboxid){
+    getData(db.products, data => {
+        textboxid.value = data.id + 1 || 1;
+    })
+}
 
 
 let db = productdb("Productdb", {
@@ -14,16 +25,19 @@ const userid = document.getElementById("userid");
 const prodname = document.getElementById("prodname");
 const seller = document.getElementById("seller");
 const price = document.getElementById("price");
-let clearFields = prodname.value = seller.value = price.value = "";
+// let clearFields = prodname.value = seller.value = price.value = "";
 
 //buttons
-const btncreate = document.getElementById("btn-create")
-const btnread = document.getElementById("btn-read")
-const btnupdate = document.getElementById("btn-update")
-const btndelete = document.getElementById("btn-delete")
+const btncreate = document.getElementById("btn-create");
+const btnread = document.getElementById("btn-read");
+const btnupdate = document.getElementById("btn-update");
+const btndelete = document.getElementById("btn-delete");
+
+//not found
+const notfound = document.getElementById("notfound")
 
 //insert value using create buttons
-btncreate.onclick = (even) => {
+btncreate.onclick = (event) => {
 
     let flag = bulkcreate(db.products, {
         name: prodname.value,
@@ -74,6 +88,8 @@ btndelete.onclick = () => {
     table();
 }
 
+
+
 function table() {
     const tbody = document.getElementById("tbody")
     //This option would create too many lines of codes
@@ -118,6 +134,8 @@ function table() {
                     })
                 })
             })
+        } else {
+            notfound.textContent = "No Found"
         }
     })
 
