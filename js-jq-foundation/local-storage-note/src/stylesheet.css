@@ -53,3 +53,24 @@ header form{
     width: 40rem;
 }
 
+form > * {
+    margin-bottom: 5px;
+    outline: none;
+    font-size: 1.4rem;
+    padding: 7px;
+    border: 1px solid #777;
+    border-radius: 4px;
+}
+
+form textarea{
+    padding: 7px 0 40px 5px;
+    font-family: inherit;
+}
+
+::placeholder{
+    font-size: 1.3rem;
+}
+
+form button {
+    background-color: var(--color-sec);
+}
