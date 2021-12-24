@@ -6,7 +6,7 @@
     --blue: #31326f;
     --light-blue: #005490;
     --color-primary: #9d0191;
-    --color-sec: #db6400;
+    --color-sec: #5758BB;
     --color-grey: #eee;
     --color-dark-grey: #222831;
 }
@@ -41,19 +41,19 @@ img {
     padding: 0 20px;
 }
 
-header h1{
+header h1 {
     font-size: 2.5rem;
     color: var(--color-primary);
     line-height: 2;
 }
 
-header form{
+header form {
     display: flex;
     flex-direction: column;
     width: 40rem;
 }
 
-form > * {
+form>* {
     margin-bottom: 5px;
     outline: none;
     font-size: 1.4rem;
@@ -62,15 +62,54 @@ form > * {
     border-radius: 4px;
 }
 
-form textarea{
+form textarea {
     padding: 7px 0 40px 5px;
     font-family: inherit;
 }
 
-::placeholder{
+::placeholder {
     font-size: 1.3rem;
 }
 
 form button {
     background-color: var(--color-sec);
+    color: whitesmoke;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+form button:hover {
+    background-color: var(--color-primary)
+}
+
+.notes {
+    padding: 1rem;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    margin: 1rem 0;
+
+}
+
+.note-counter, .note-text {
+    font-size: 1.4rem;
+}
+
+.note-title{
+    font-size: 1.6rem;
+}
+
+.note-btn{
+    padding: 7px;
+    margin-top: 5px;
+    background-color: orangered;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+.edit-btn{
+    background-color: var(--color-primary)
 }
