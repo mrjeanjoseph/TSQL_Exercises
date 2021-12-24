@@ -88,3 +88,27 @@ function deleteNote(index) {
         showNotes();
     }
 }
+
+//Function to edit the notes
+
+function editNote(index) {
+
+    // let notes = localStorage.getItem("notes");
+    let notes
+    if(addTitle.value !== "" || addTxt.value !== ""){
+        return alert("The form will cleared ")
+    }
+    // if(notes == null) {
+    //     notesObj = [];
+    // } else {
+    //     notesObj = JSON.parse(notes);
+    // }
+    localStorageNotes(notes);
+    // console.log(notesObj)
+    notesObj.findIndex((element, index) => {
+        addTitle.value = element.title;
+        addTxt.value = element.text;
+    })
+    notesObj.splice(index, 1);
+    localStorage.setItem("notes", JSON.stringify(notesObj));
+}
