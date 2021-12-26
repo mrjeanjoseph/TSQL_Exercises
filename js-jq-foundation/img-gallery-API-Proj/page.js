@@ -12,8 +12,8 @@ input.addEventListener("input", (e) => {
     query = e.target.value
 });
 
-async function getAllPhotos(pagenr){
-    const data = await fetch(`https://api.pexels.com/v1/curated?per_page=15&page=${pagenr}`,{
+async function getAllPhotos(pagenr) {
+    const data = await fetch(`https://api.pexels.com/v1/curated?per_page=15&page=${pagenr}`, {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -30,10 +30,10 @@ async function getAllPhotos(pagenr){
                 <a href=${photo.src.large}>Download</a>`;
         document.querySelector(".gallery").appendChild(pic);
     });
-    
+
 }
-async function searchPhoto(pagenr){
-    const data = await fetch(`https://api.pexels.com/v1/search?query=people?per_page=15&page=${pagenr}`,{
+async function searchPhoto(pagenr) {
+    const data = await fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=15&page=${pagenr}`, {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -50,17 +50,30 @@ async function searchPhoto(pagenr){
                 <a href=${photo.src.large}>Download</a>`;
         document.querySelector(".gallery").appendChild(pic);
     });
-    
+
+}
+
+searchButton.addEventListener("click", () => {
+    if (input.value === "") return;
+    clear();
+    search = true;
+    searchPhoto(query, pagenr);
+});
+
+function clear() {
+    input.value = "";
+    document.querySelector(".gallery").innerHTML = "";
+    pagenr = 1;
 }
 
 next.addEventListener("click", () => {
-    if(!search){
+    if (!search) {
         pagenr++;
         getAllPhotos(pagenr);
     } else {
-        if(query.value ==="") return;
+        if (query.value === "") return;
         pagenr++;
-        searchPhoto
+        searchPhoto(pagenr);
     }
 })
 
