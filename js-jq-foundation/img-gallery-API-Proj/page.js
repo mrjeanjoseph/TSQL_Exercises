@@ -12,7 +12,7 @@ input.addEventListener("input", (e) => {
     query = e.target.value
 });
 
-async function CuratedPhotos(pagenr){
+async function getAllPhotos(pagenr){
     const data = await fetch(`https://api.pexels.com/v1/curated?per_page=15&page=${pagenr}`,{
         method: 'GET',
         headers: {
@@ -25,7 +25,27 @@ async function CuratedPhotos(pagenr){
     result.photos.forEach((photo) => {
         const pic = document.createElement("div");
         pic.innerHTML = `
-            <img src=${photo.src.large}
+            <img src=${photo.src.large}>
+                <p>Photo: ${photo.photographer}</p>
+                <a href=${photo.src.large}>Download</a>`;
+        document.querySelector(".gallery").appendChild(pic);
+    });
+    
+}
+async function searchPhoto(pagenr){
+    const data = await fetch(`https://api.pexels.com/v1/search?query=people?per_page=15&page=${pagenr}`,{
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: auth,
+        },
+    });
+    const result = await data.json();
+    // console.log(result);
+    result.photos.forEach((photo) => {
+        const pic = document.createElement("div");
+        pic.innerHTML = `
+            <img src=${photo.src.large}>
                 <p>Photo: ${photo.photographer}</p>
                 <a href=${photo.src.large}>Download</a>`;
         document.querySelector(".gallery").appendChild(pic);
@@ -33,4 +53,15 @@ async function CuratedPhotos(pagenr){
     
 }
 
-CuratedPhotos(pagenr);
+next.addEventListener("click", () => {
+    if(!search){
+        pagenr++;
+        getAllPhotos(pagenr);
+    } else {
+        if(query.value ==="") return;
+        pagenr++;
+        searchPhoto
+    }
+})
+
+getAllPhotos(pagenr);
