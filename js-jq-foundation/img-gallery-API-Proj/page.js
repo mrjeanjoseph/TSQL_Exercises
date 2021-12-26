@@ -13,7 +13,7 @@ input.addEventListener("input", (e) => {
 });
 
 async function CuratedPhotos(pagenr){
-    const data = await fetch(`https://api.pexels.com/v1/curated?per_page=${pagenr}`,{
+    const data = await fetch(`https://api.pexels.com/v1/curated?per_page=15&page=${pagenr}`,{
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -21,7 +21,16 @@ async function CuratedPhotos(pagenr){
         },
     });
     const result = await data.json();
-    console.log(result);
+    // console.log(result);
+    result.photos.forEach((photo) => {
+        const pic = document.createElement("div");
+        pic.innerHTML = `
+            <img src=${photo.src.large}
+                <p>Photo: ${photo.photographer}</p>
+                <a href=${photo.src.large}>Download</a>`;
+        document.querySelector(".gallery").appendChild(pic);
+    });
+    
 }
 
 CuratedPhotos(pagenr);
