@@ -3,15 +3,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ebuy
-{
+namespace Ebuy {
     [MetadataType(typeof(Category.Metadata))]
-    public class Category : Entity<long>
-    {
+    public class Category : Entity<long> {
         public virtual ICollection<Auction> Auctions { get; set; }
 
-        public bool IsTopLevelCategory
-        {
+        public bool IsTopLevelCategory {
             get { return ParentId == null; }
         }
 
@@ -24,20 +21,17 @@ namespace Ebuy
         public virtual ICollection<Category> SubCategories { get; set; }
 
 
-        public Category()
-        {
+        public Category() {
             Auctions = new Collection<Auction>();
             SubCategories = new Collection<Category>();
         }
 
-        public Category(string name)
-        {
+        public Category(string name) {
             Name = name;
         }
 
 
-        protected override string GenerateKey()
-        {
+        protected override string GenerateKey() {
             if (string.IsNullOrWhiteSpace(Name))
                 // TODO: Localize
                 throw new EntityKeyGenerationException(GetType(), "Name is empty");
@@ -45,8 +39,7 @@ namespace Ebuy
             return KeyGenerator.Generate(Name);
         }
 
-        public class Metadata
-        {
+        public class Metadata {
             [Required, StringLength(100)]
             public object Name;
 

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Ebuy.DataAccess
-{
-    public interface IRepository : IDisposable
-    {
+namespace Ebuy.DataAccess {
+    public interface IRepository : IDisposable {
         void Add<TModel>(TModel instance) where TModel : class, IEntity;
         void Add<TModel>(IEnumerable<TModel> instances) where TModel : class, IEntity;
-        
+
         IQueryable<TModel> All<TModel>(params string[] includePaths) where TModel : class, IEntity;
 
         void Delete<TModel>(object key) where TModel : class, IEntity;

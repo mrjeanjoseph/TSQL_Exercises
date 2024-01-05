@@ -1,9 +1,7 @@
 using System;
 
-namespace Ebuy
-{
-    public class Payment : Entity<Guid>
-    {
+namespace Ebuy {
+    public class Payment : Entity<Guid> {
         public Currency Amount { get; private set; }
 
         public Auction Auction { get; private set; }
@@ -13,16 +11,13 @@ namespace Ebuy
         public User User { get; set; }
 
 
-        public Payment(User user, Auction auction, Currency amount)
-        {
+        public Payment(User user, Auction auction, Currency amount) {
             User = user;
             Auction = auction;
             Amount = amount;
             Timestamp = DateTime.Now;
         }
 
-        private Payment()
-        {
-        }
+        private Payment() { }
     }
 }

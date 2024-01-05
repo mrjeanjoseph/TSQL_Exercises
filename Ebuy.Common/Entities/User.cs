@@ -4,15 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
 using Ebuy.DataAnnotations;
 
-namespace Ebuy
-{
+namespace Ebuy {
     [MetadataType(typeof(User.Metadata))]
-    public class User : Entity<long>
-    {
+    public class User : Entity<long> {
         public virtual ICollection<Auction> Selling { get; private set; }
 
-        public virtual string DisplayName
-        {
+        public virtual string DisplayName {
             get { return _displayName ?? Username; }
             set { _displayName = value; }
         }
@@ -29,25 +26,22 @@ namespace Ebuy
         public virtual ICollection<Auction> WatchedAuctions { get; private set; }
 
 
-        public User()
-        {
+        public User() {
             Payments = new Collection<Payment>();
             Selling = new Collection<Auction>();
             WatchedAuctions = new Collection<Auction>();
         }
 
 
-        protected override string GenerateKey()
-        {
-            if(string.IsNullOrWhiteSpace(Username))
+        protected override string GenerateKey() {
+            if (string.IsNullOrWhiteSpace(Username))
                 throw new EntityKeyGenerationException(GetType(), "Username is empty");
 
             return KeyGenerator.Generate(Username);
         }
 
 
-        public void Bid(Auction auction, Currency bidAmount)
-        {
+        public void Bid(Auction auction, Currency bidAmount) {
             Contract.Requires(auction != null);
             Contract.Requires(bidAmount != null);
 
@@ -55,8 +49,7 @@ namespace Ebuy
         }
 
 
-        public class Metadata
-        {
+        public class Metadata {
             [Required, StringLength(50)]
             public object DisplayName;
 
