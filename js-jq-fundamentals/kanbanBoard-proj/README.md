@@ -1,4 +1,0 @@
-# Kanban Board / 
-## Vanilla JavaScript
-
-
