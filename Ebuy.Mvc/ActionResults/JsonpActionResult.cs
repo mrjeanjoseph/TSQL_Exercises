@@ -1,18 +1,14 @@
 ﻿using System.Web.Mvc;
 
-namespace Ebuy
-{
-    public class JsonpResult : JsonResult
-    {
+namespace Ebuy {
+    public class JsonpResult : JsonResult {
         public string Callback { get; set; }
 
-        public JsonpResult()
-        {
+        public JsonpResult() {
             JsonRequestBehavior = JsonRequestBehavior.AllowGet;
         }
 
-        public override void ExecuteResult(ControllerContext context)
-        {
+        public override void ExecuteResult(ControllerContext context) {
             var httpContext = context.HttpContext;
             var callback = Callback;
 
