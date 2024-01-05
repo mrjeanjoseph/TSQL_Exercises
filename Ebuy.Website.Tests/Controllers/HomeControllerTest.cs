@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web.Mvc;
+﻿using Ebuy.Website.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ebuy.Website;
-using Ebuy.Website.Controllers;
+using System.Web.Mvc;
 
-namespace Ebuy.Website.Tests.Controllers
-{
+namespace Ebuy.Website.Tests.Controllers {
     [TestClass]
-    public class HomeControllerTest
-    {
+    public class HomeControllerTest {
         [TestMethod]
-        public void Index()
-        {
+        public void Index() {
             // Arrange
             HomeController controller = new HomeController();
 
@@ -26,8 +18,7 @@ namespace Ebuy.Website.Tests.Controllers
         }
 
         [TestMethod]
-        public void About()
-        {
+        public void About() {
             // Arrange
             HomeController controller = new HomeController();
 
@@ -39,8 +30,7 @@ namespace Ebuy.Website.Tests.Controllers
         }
 
         [TestMethod]
-        public void Contact()
-        {
+        public void Contact() {
             // Arrange
             HomeController controller = new HomeController();
 
