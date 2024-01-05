@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Globalization;
-using System.Web.Security;
 
-namespace Ebuy.Website.Models
-{
-    public class UsersContext : DbContext
-    {
+namespace Ebuy.Website.Models {
+    public class UsersContext : DbContext {
         public UsersContext()
-            : base("DefaultConnection")
-        {
+            : base("DefaultConnection") {
         }
 
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
     [Table("UserProfile")]
-    public class UserProfile
-    {
+    public class UserProfile {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
     }
 
-    public class RegisterExternalLoginModel
-    {
+    public class RegisterExternalLoginModel {
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -36,8 +27,7 @@ namespace Ebuy.Website.Models
         public string ExternalLoginData { get; set; }
     }
 
-    public class LocalPasswordModel
-    {
+    public class LocalPasswordModel {
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Current password")]
@@ -55,8 +45,7 @@ namespace Ebuy.Website.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginModel
-    {
+    public class LoginModel {
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -70,8 +59,7 @@ namespace Ebuy.Website.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel
-    {
+    public class RegisterModel {
         [Required]
         [Display(Name = "User name")]
         public string UserName { get; set; }
@@ -88,8 +76,7 @@ namespace Ebuy.Website.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class ExternalLogin
-    {
+    public class ExternalLogin {
         public string Provider { get; set; }
         public string ProviderDisplayName { get; set; }
         public string ProviderUserId { get; set; }

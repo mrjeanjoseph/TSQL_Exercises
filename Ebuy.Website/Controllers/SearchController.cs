@@ -5,19 +5,15 @@ using AutoMapper;
 using Ebuy.DataAccess;
 using Ebuy.Website.Models;
 
-namespace Ebuy.Website.Controllers
-{
-    public class SearchController : Controller
-    {
+namespace Ebuy.Website.Controllers {
+    public class SearchController : Controller {
         private readonly IRepository _repository;
 
-        public SearchController(IRepository repository)
-        {
+        public SearchController(IRepository repository) {
             _repository = repository;
         }
 
-        public ActionResult Index(SearchCriteria criteria)
-        {
+        public ActionResult Index(SearchCriteria criteria) {
             IQueryable<Auction> auctions;
 
             // Filter auctions by keyword
@@ -26,8 +22,7 @@ namespace Ebuy.Website.Controllers
             else
                 auctions = _repository.All<Auction>();
 
-            switch (criteria.GetSortByField())
-            {
+            switch (criteria.GetSortByField()) {
                 case SearchCriteria.SearchFieldType.Price:
                     auctions = auctions.OrderBy(q => q.CurrentPrice.Value);
                     break;
@@ -56,23 +51,19 @@ namespace Ebuy.Website.Controllers
             return View("Search", viewModel);
         }
 
-        private IQueryable<Auction> PageSearchResult(SearchCriteria criteria, IQueryable<Auction> auctionsData)
-        {
+        private IQueryable<Auction> PageSearchResult(SearchCriteria criteria, IQueryable<Auction> auctionsData) {
             IQueryable<Auction> result;
-            
+
             var numberOfItems = auctionsData.Count();
 
-            if (numberOfItems > criteria.GetPageSize())
-            {
-                var maxNumberOfPages = numberOfItems/criteria.GetPageSize();
+            if (numberOfItems > criteria.GetPageSize()) {
+                var maxNumberOfPages = numberOfItems / criteria.GetPageSize();
 
                 if (criteria.CurrentPage > maxNumberOfPages)
                     criteria.CurrentPage = maxNumberOfPages;
 
                 result = auctionsData.Page(criteria.CurrentPage, criteria.GetPageSize()).AsQueryable();
-            }
-            else
-            {
+            } else {
                 result = auctionsData;
             }
 
