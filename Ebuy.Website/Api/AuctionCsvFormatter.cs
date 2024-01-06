@@ -24,8 +24,7 @@ namespace Ebuy.Website.Api {
         }
 
         public override void WriteToStream(Type type, object value, Stream stream, System.Net.Http.HttpContent content) {
-            var source = value as IEnumerable<Auction>;
-            if (source != null) {
+            if (value is IEnumerable<Auction> source) {
                 foreach (var item in source) {
                     WriteItem(item, stream);
                 }
