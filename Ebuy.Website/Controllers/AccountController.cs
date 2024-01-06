@@ -11,21 +11,20 @@ using System.Web.Security;
 using WebMatrix.WebData;
 
 namespace Ebuy.Website.Controllers {
+
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller {
-        //
-        // GET: /Account/Login
 
+    public class AccountController : Controller {
+        
+        // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl) {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
-        //
+        
         // POST: /Account/Login
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -38,10 +37,8 @@ namespace Ebuy.Website.Controllers {
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
-
-        //
+        
         // POST: /Account/LogOff
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff() {
@@ -49,18 +46,14 @@ namespace Ebuy.Website.Controllers {
 
             return RedirectToAction("Index", "Home");
         }
-
-        //
+        
         // GET: /Account/Register
-
         [AllowAnonymous]
         public ActionResult Register() {
             return View();
         }
-
-        //
+        
         // POST: /Account/Register
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -79,10 +72,8 @@ namespace Ebuy.Website.Controllers {
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
+        
         // POST: /Account/Disassociate
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Disassociate(string provider, string providerUserId) {
@@ -104,10 +95,8 @@ namespace Ebuy.Website.Controllers {
 
             return RedirectToAction("Manage", new { Message = message });
         }
-
-        //
+        
         // GET: /Account/Manage
-
         public ActionResult Manage(ManageMessageId? message) {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
@@ -118,10 +107,8 @@ namespace Ebuy.Website.Controllers {
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
-
-        //
+        
         // POST: /Account/Manage
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Manage(LocalPasswordModel model) {
@@ -165,10 +152,8 @@ namespace Ebuy.Website.Controllers {
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
+        
         // POST: /Account/ExternalLogin
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -176,9 +161,8 @@ namespace Ebuy.Website.Controllers {
             return new ExternalLoginResult(provider, Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
         }
 
-        //
+        
         // GET: /Account/ExternalLoginCallback
-
         [AllowAnonymous]
         public ActionResult ExternalLoginCallback(string returnUrl) {
             AuthenticationResult result = OAuthWebSecurity.VerifyAuthentication(Url.Action("ExternalLoginCallback", new { ReturnUrl = returnUrl }));
@@ -203,9 +187,8 @@ namespace Ebuy.Website.Controllers {
             }
         }
 
-        //
+        
         // POST: /Account/ExternalLoginConfirmation
-
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -242,9 +225,8 @@ namespace Ebuy.Website.Controllers {
             return View(model);
         }
 
-        //
+        
         // GET: /Account/ExternalLoginFailure
-
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure() {
             return View();

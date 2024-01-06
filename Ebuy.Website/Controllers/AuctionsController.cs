@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Ebuy.DataAccess;
 using System.Linq;
 using System.Web.Mvc;
-using AutoMapper;
-using Ebuy.DataAccess;
-using Ebuy.Website.Models;
 
 namespace Ebuy.Website.Controllers {
     public class AuctionsController : Controller {
