@@ -1,0 +1,77 @@
+﻿ProductID   ProductName                              AverageSoldByQuarter Quarter     Year
+----------- ---------------------------------------- -------------------- ----------- -----------
+17          Alice Mutton                             100                  3           2020
+6           Grandma's Boysenberry Spread             70                   3           2020
+61          Sirop d'érable                           70                   3           2020
+27          Schoggi Schokolade                       50                   3           2020
+40          Boston Crab Meat                         41                   3           2020
+73          Röd Kaviar                               38                   3           2020
+69          Gudbrandsdalsost                         37                   3           2020
+15          Genen Shouyu                             37                   3           2020
+12          Queso Manchego La Pastora                36                   3           2020
+77          Original Frankfurter grüne Soße          36                   3           2020
+42          Singaporean Hokkien Fried Mee            33                   3           2020
+22          Gustaf's Knäckebröd                      32                   3           2020
+46          Spegesild                                32                   3           2020
+60          Camembert Pierrot                        32                   3           2020
+36          Inlagd Sill                              30                   3           2020
+7           Uncle Bob's Organic Dried Pears          30                   3           2020
+72          Mozzarella di Giovanni                   29                   3           2020
+58          Escargots de Bourgogne                   28                   3           2020
+2           Chang                                    27                   3           2020
+13          Konbu                                    27                   3           2020
+21          Sir Rodney's Scones                      26                   3           2020
+76          Lakkalikööri                             26                   3           2020
+67          Laughing Lumberjack Lager                25                   3           2020
+62          Tarte au sucre                           25                   3           2020
+56          Gnocchi di nonna Alice                   25                   3           2020
+50          Valkoinen suklaa                         25                   3           2020
+63          Vegie-spread                             24                   3           2020
+16          Pavlova                                  24                   3           2020
+18          Carnarvon Tigers                         24                   3           2020
+70          Outback Lager                            22                   3           2020
+75          Rhönbräu Klosterbier                     22                   3           2020
+54          Tourtière                                22                   3           2020
+49          Maxilaku                                 21                   3           2020
+20          Sir Rodney's Marmalade                   21                   3           2020
+10          Ikura                                    21                   3           2020
+29          Thüringer Rostbratwurst                  20                   3           2020
+31          Gorgonzola Telino                        20                   3           2020
+45          Rogede sild                              20                   3           2020
+35          Steeleye Stout                           20                   3           2020
+44          Gula Malacca                             19                   3           2020
+59          Raclette Courdavault                     19                   3           2020
+26          Gumbär Gummibärchen                      19                   3           2020
+33          Geitost                                  18                   3           2020
+51          Manjimup Dried Apples                    18                   3           2020
+47          Zaanse koeken                            17                   3           2020
+64          Wimmers gute Semmelknödel                17                   3           2020
+71          Flotemysost                              16                   3           2020
+41          Jack's New England Clam Chowder          16                   3           2020
+30          Nord-Ost Matjeshering                    16                   3           2020
+4           Chef Anton's Cajun Seasoning             16                   3           2020
+19          Teatime Chocolate Biscuits               16                   3           2020
+5           Chef Anton's Gumbo Mix                   15                   3           2020
+28          Rössle Sauerkraut                        15                   3           2020
+23          Tunnbröd                                 15                   3           2020
+38          Côte de Blaye                            15                   3           2020
+53          Perth Pasties                            15                   3           2020
+68          Scottish Longbreads                      14                   3           2020
+65          Louisiana Fiery Hot Pepper Sauce         14                   3           2020
+24          Guaraná Fantástica                       14                   3           2020
+3           Aniseed Syrup                            14                   3           2020
+14          Tofu                                     14                   3           2020
+1           Chai                                     13                   3           2020
+39          Chartreuse verte                         13                   3           2020
+43          Ipoh Coffee                              13                   3           2020
+11          Queso Cabrales                           12                   3           2020
+55          Pâté chinois                             10                   3           2020
+57          Ravioli Angelo                           10                   3           2020
+52          Filo Mix                                 10                   3           2020
+48          Chocolade                                6                    3           2020
+66          Louisiana Hot Spiced Okra                4                    3           2020
+
+(70 rows affected)
+
+
+Completion time: 2021-04-09T10:04:10.1356107-06:00

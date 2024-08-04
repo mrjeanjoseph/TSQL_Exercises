@@ -1,0 +1,41 @@
+--Configuring In-Memory Tempdb Metadata
+ALTER SERVER CONFIGURATION
+SET MEMORY_OPTIMIZED TEMPDB_METADATA = ON;
+
+SELECT SERVERPROPERTY('IsTempdbMetadataMemoryOptimized');
+GO;
+RETURN;
+
+
+--Using Custom Capture Policy for Query Store
+ALTER DATABASE [WideWorldImporters]
+SET QUERY_STORE = ON (
+	OPERATION_MODE = READ_WRITE,
+	QUERY_CAPTURE_MODE = CUSTOM,
+	QUERY_CAPTURE_POLICY = (
+		STALE_CAPTURE_POLICY_THRESHOLD = 24 HOURS,
+		EXECUTION_COUNT = 30,
+		TOTAL_COMPILE_CPU_TIME_MS = 1000,
+		TOTAL_EXECUTION_CPU_TIME_MS = 100)
+	)
+GO;
+RETURN;
+
+--Configuring Accelarated Database Recovery
+ALTER DATABASE [WideWorldImporters]
+SET ACCELARATED_DATABASE_RECOVERY = ON;
+
+SELECT is_accelerated_database_recovery_on
+FROM sys.databases
+WHERE [name] = 'WideWorldImporters';
+GO;
+RETURN;
+
+--Using the New Index Option
+CREATE TABLE [dbo].[Cities] (
+	[CityID] [INT] NOT NULL,
+	[CityName] NVARCHAR(32) NOT NULL,
+	CONSTRAINT [PK_Cities]
+		PRIMARY KEY CLUSTERED (CityID ASC)
+	WITH (OPTIMIZE_FOR_SEQUENTIAL_KEY = ON)
+)

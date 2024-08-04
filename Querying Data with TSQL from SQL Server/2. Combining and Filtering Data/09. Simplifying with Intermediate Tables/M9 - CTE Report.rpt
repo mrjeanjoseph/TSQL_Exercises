@@ -1,0 +1,18 @@
+﻿EmployeeId  Employee                         Manager                          RegionCount SalesCount  SalesVolume     AverageSaleAmount
+----------- -------------------------------- -------------------------------- ----------- ----------- --------------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1           Davolio, Nancy                   Fuller, Andrew                   47          123         $192,107.62     $1,561.85
+2           Fuller, Andrew                   Unknown                          31          96          $166,537.76     $1,734.77
+3           Leverling, Janet                 Fuller, Andrew                   54          127         $201,961.64     $1,602.87
+4           Peacock, Margaret                Fuller, Andrew                   59          157         $229,812.34     $1,502.04
+5           Buchanan, Steven                 Fuller, Andrew                   14          41          $68,792.28      $1,637.91
+6           Suyama, Michael                  Buchanan, Steven                 31          67          $73,913.14      $1,103.18
+7           King, Robert                     Buchanan, Steven                 22          72          $124,568.24     $1,730.11
+8           Callahan, Laura                  Fuller, Andrew                   41          104         $126,862.28     $1,219.83
+9           Dodsworth, Anne                  Buchanan, Steven                 12          43          $77,308.07      $1,797.86
+13          Peterson, Ella                   Unknown                          0           0           $0.00           $0.00
+Warning: Null value is eliminated by an aggregate or other SET operation.
+
+(10 rows affected)
+
+
+Completion time: 2021-04-16T13:49:19.8498243-06:00

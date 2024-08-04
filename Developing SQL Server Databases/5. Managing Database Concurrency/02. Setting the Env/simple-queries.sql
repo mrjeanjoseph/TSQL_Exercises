@@ -1,0 +1,15 @@
+--Simple queries
+
+SELECT @@VERSION AS [Version];
+
+
+SELECT @@TEXTSIZE
+
+SELECT @@DATEFIRST
+SET LANGUAGE us_english;  
+GO  
+SELECT @@DATEFIRST; 
+
+SET DATEFIRST 5;  
+SELECT @@DATEFIRST AS 'First Day'  
+    ,DATEPART(dw, SYSDATETIME()) AS 'Today';
