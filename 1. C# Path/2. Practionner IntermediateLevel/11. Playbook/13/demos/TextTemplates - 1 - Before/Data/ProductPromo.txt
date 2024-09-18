@@ -1,0 +1,8 @@
+(Name)
+
+Availability: (Status)
+Price: (Price)
+
+This amazing (Name) has the following features:
+
+(FeatureList)

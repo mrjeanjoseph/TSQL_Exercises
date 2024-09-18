@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenHoursLibrary", "OpenHoursLibrary\OpenHoursLibrary.csproj", "{2E8226C5-1DD2-4DDC-BCB4-2D0CA5EFB5BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenHoursLibrary.Test", "OpenHoursLibrary.Test\OpenHoursLibrary.Test.csproj", "{AFEDC66D-47C0-4493-A598-44B5F053A02F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E8226C5-1DD2-4DDC-BCB4-2D0CA5EFB5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8226C5-1DD2-4DDC-BCB4-2D0CA5EFB5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8226C5-1DD2-4DDC-BCB4-2D0CA5EFB5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8226C5-1DD2-4DDC-BCB4-2D0CA5EFB5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFEDC66D-47C0-4493-A598-44B5F053A02F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFEDC66D-47C0-4493-A598-44B5F053A02F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFEDC66D-47C0-4493-A598-44B5F053A02F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFEDC66D-47C0-4493-A598-44B5F053A02F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46BAF20B-7B14-4ADD-B95E-622A7E486EC3}
+	EndGlobalSection
+EndGlobal

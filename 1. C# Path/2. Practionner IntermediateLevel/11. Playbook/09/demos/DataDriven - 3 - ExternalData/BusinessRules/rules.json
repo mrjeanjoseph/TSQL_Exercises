@@ -1,0 +1,14 @@
+{
+  "IgnoreDirNames": [
+    ".hg"
+  ],
+  "DeleteDirNames": [
+    "bin",
+    "obj"
+  ],
+  "IgnoreFileNames": [
+    "TemporaryFile.tmp"
+  ],
+  "DeleteFileNames": [],
+  "IgnoreMinSize": 104857600
+}

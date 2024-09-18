@@ -1,0 +1,10 @@
+[[Name]]
+
+Availability: [[Status]]
+Price: [[Price]]
+(Diagnostic note: Contains mutable fields: [[ContainsMutableFields]])
+
+
+This amazing [[Name]] has the following features:
+
+[[FeatureList]]
