@@ -1,0 +1,1 @@
+﻿Console.WriteLine("File cannot be empty");
