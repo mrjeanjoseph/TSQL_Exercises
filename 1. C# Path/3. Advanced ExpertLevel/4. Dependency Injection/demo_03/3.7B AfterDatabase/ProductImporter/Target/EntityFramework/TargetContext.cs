@@ -3,7 +3,7 @@ using ProductImporter.Model;
 
 namespace ProductImporter.Target.EntityFramework;
 
-public class TargetContext : DbContext
+public class TargetContext : DbContext // Implement this in ADW and BRT .NET 8
 {
     public TargetContext(DbContextOptions<TargetContext> options)
         : base(options)
