@@ -1,16 +1,12 @@
 ﻿using Demo.Patterns.Strategy;
 using NUnit.Framework;
 
-namespace Tests.Strategy
-{
+namespace Tests.Strategy {
     [TestFixture]
-    public class Given_a_WholeOrderDiscount
-    {
+    public class Given_a_WholeOrderDiscount {
         [Test]
-        public void Then_the_discount_is_based_on_the_order_total()
-        {
-            var order = new Order
-            {
+        public void Then_the_discount_is_based_on_the_order_total() {
+            var order = new Order {
                 Items =
                 {
                     new OrderItem { Quantity = 2, Price = 10.0m },

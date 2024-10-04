@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities
-{
-    public class Part
-    {
+namespace RepairShop.Domain.Model.Entities {
+    public class Part {
         public int Id { get; set; }
         public ICollection<Repair> Repairs { get; set; } = new HashSet<Repair>();
 

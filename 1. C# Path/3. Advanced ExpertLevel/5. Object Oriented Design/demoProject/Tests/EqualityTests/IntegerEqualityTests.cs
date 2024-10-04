@@ -1,13 +1,10 @@
 ﻿using NUnit.Framework;
 
-namespace Tests.EqualityTests
-{
+namespace Tests.EqualityTests {
     [TestFixture]
-    public class IntegerEqualityTests
-    {
+    public class IntegerEqualityTests {
         [Test]
-        public void Integer_equality()
-        {
+        public void Integer_equality() {
             var a = 2 * 2;
             var b = 8 / 2;
 

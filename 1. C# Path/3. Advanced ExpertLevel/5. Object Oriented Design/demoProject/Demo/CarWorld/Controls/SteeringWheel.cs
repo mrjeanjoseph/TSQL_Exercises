@@ -1,9 +1,5 @@
-﻿namespace Demo.CarWorld.Controls
-{
-    public class SteeringWheel
-    {
-        public SteeringWheel()
-        {
-        }
+﻿namespace Demo.CarWorld.Controls {
+    public class SteeringWheel {
+        public SteeringWheel() { }
     }
 }

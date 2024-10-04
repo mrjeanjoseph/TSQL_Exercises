@@ -1,18 +1,14 @@
 ﻿using Demo.Immutability;
 using NUnit.Framework;
 
-namespace Tests.EqualityTests
-{
+namespace Tests.EqualityTests {
     [TestFixture]
-    public class MailingInfoEqualityTests
-    {
+    public class MailingInfoEqualityTests {
         [Test]
-        public void MailingInfo_equality()
-        {
+        public void MailingInfo_equality() {
             var info1 = new MailingInfo("John Doe", "123 Any St.", "Suite 456", "Anytown", "OH", "43210", "USA");
             var info2 = new MailingInfo("John Doe", "123 Any St.", "Suite 456", "Anytown", "OH", "43210", "USA");
-            var info3 = new MailingInfo
-            {
+            var info3 = new MailingInfo {
                 FullName = "John Doe"
             };
             Assert.IsNull(info3.Address1);

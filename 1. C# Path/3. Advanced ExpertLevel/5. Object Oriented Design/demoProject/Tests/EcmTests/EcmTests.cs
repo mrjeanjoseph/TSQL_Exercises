@@ -1,15 +1,10 @@
-﻿using Demo;
-using Demo.CarWorld;
-using Demo.CarWorld.Electronics;
+﻿using Demo.CarWorld.Electronics;
 using NUnit.Framework;
 
-namespace Tests.EcmTests
-{
+namespace Tests.EcmTests {
     [TestFixture]
-    public class EcmTests
-    {
-        private void TestEcm(EngineControlModule sut)
-        {
+    public class EcmTests {
+        private void TestEcm(EngineControlModule sut) {
             sut.Start();
             Assert.IsTrue(sut.IsRunning);
             sut.Stop();
@@ -17,20 +12,17 @@ namespace Tests.EcmTests
         }
 
         [Test]
-        public void TestIceControlModule()
-        {
+        public void TestIceControlModule() {
             TestEcm(new IceControlModule());
         }
 
         [Test]
-        public void TestElectricControlModule()
-        {
+        public void TestElectricControlModule() {
             TestEcm(new ElectricControlModule());
         }
 
         [Test]
-        public void TestHybridControlModule()
-        {
+        public void TestHybridControlModule() {
             TestEcm(new HybridControlModule());
         }
     }

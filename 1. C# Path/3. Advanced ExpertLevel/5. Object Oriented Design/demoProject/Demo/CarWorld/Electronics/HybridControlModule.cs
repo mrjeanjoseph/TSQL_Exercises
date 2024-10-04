@@ -1,10 +1,8 @@
 ﻿using Demo.CarWorld.Enumerations;
 using Demo.CarWorld.Sensors;
 
-namespace Demo.CarWorld.Electronics
-{
-    public sealed class HybridControlModule : EngineControlModule
-    {
+namespace Demo.CarWorld.Electronics {
+    public sealed class HybridControlModule : EngineControlModule {
         private int engineStatus;
         private int _relayStatus;
 
@@ -12,21 +10,18 @@ namespace Demo.CarWorld.Electronics
         public ExhaustOxygenSensor ExhaustOxygenSensor { get; set; } = new ExhaustOxygenSensor();
         public override bool IsRunning => engineStatus == 1 && _relayStatus == 1;
 
-        public HybridControlModule()
-        {
+        public HybridControlModule() {
             EngineType = EngineType.Hybrid;
         }
 
-        public override void Start()
-        {
+        public override void Start() {
             // Close some relays
             _relayStatus = 1;
             // Crank the starter
             engineStatus = 1;
         }
 
-        public override void Stop()
-        {
+        public override void Stop() {
             // Open some relays
             _relayStatus = 0;
             // Cut the power

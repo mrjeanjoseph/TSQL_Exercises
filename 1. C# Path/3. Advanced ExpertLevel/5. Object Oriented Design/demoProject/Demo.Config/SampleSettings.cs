@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Demo.Config
-{
-    internal class SampleSettings
-    {
+namespace Demo.Config {
+    internal class SampleSettings {
         public const string SectionName = "SampleSettings";
 
         public string StringSetting { get; set; } = null!;

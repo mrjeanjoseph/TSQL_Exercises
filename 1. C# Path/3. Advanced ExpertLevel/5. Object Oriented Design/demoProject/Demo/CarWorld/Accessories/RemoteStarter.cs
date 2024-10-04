@@ -1,11 +1,8 @@
-﻿namespace Demo.CarWorld.Accessories
-{
-    public class RemoteStarter
-    {
+﻿namespace Demo.CarWorld.Accessories {
+    public class RemoteStarter {
         private IStartable _device;
 
-        public RemoteStarter(IStartable device)
-        {
+        public RemoteStarter(IStartable device) {
             _device = device;
         }
 

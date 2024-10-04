@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace Demo.Nullability
-{
-    public class Person
-    {
+namespace Demo.Nullability {
+    public class Person {
 #nullable disable
         private string emailAddress = null;
 #nullable restore
@@ -26,21 +24,18 @@ namespace Demo.Nullability
         public float? Height { get; set; } = null;
         public CreditCard CreditCard { get; set; } = new CreditCard(null!);
 
-        public Person(string emailAddress, string firstName, string lastName)
-        {
+        public Person(string emailAddress, string firstName, string lastName) {
             EmailAddress = emailAddress;
             FirstName = firstName;
             LastName = lastName;
         }
     }
 
-    public class CreditCard
-    {
+    public class CreditCard {
         public string CardNumber { get; set; }
 
 #nullable disable warnings
-        public CreditCard(string cardNumber)
-        {
+        public CreditCard(string cardNumber) {
             CardNumber = null;
         }
 #nullable restore

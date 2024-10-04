@@ -1,10 +1,8 @@
 ﻿using Demo.CarWorld.Enumerations;
 using Demo.CarWorld.Sensors;
 
-namespace Demo.CarWorld.Electronics
-{
-    public abstract class EngineControlModule
-    {
+namespace Demo.CarWorld.Electronics {
+    public abstract class EngineControlModule {
         public AirTemperatureSensor AirTemperatureSensor { get; set; } = new AirTemperatureSensor();
 
         public EngineType EngineType { get; set; }

@@ -1,9 +1,6 @@
-﻿namespace Demo.CarWorld.Sensors
-{
-    public class ThrottlePositionSensor
-    {
-        public ThrottlePositionSensor()
-        {
+﻿namespace Demo.CarWorld.Sensors {
+    public class ThrottlePositionSensor {
+        public ThrottlePositionSensor() {
         }
     }
 }

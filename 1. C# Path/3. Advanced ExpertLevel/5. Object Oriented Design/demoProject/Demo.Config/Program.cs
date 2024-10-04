@@ -6,21 +6,16 @@ using Microsoft.Extensions.Options;
 
 namespace Demo.Config;
 
-internal sealed class Program
-{
-    static async Task Main(string[] args)
-    {
+internal sealed class Program {
+    static async Task Main(string[] args) {
         await Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration(configurationBuilder =>
-            {
+            .ConfigureAppConfiguration(configurationBuilder => {
                 configurationBuilder.AddJsonFile("appsettings.json", false, true).Build();
             })
-            .ConfigureLogging((context, logging) =>
-            {
+            .ConfigureLogging((context, logging) => {
                 logging.ClearProviders();
             })
-            .ConfigureServices((context, serviceCollection) =>
-            {
+            .ConfigureServices((context, serviceCollection) => {
                 serviceCollection.AddOptions<SampleSettings>()
                     .Bind(context.Configuration.GetSection(SampleSettings.SectionName))
                     .ValidateDataAnnotations()
@@ -33,29 +28,22 @@ internal sealed class Program
     }
 }
 
-internal sealed class ProgramService : IHostedService
-{
+internal sealed class ProgramService : IHostedService {
     private readonly IHostApplicationLifetime appLifetime;
     private readonly ISettingsLogger settingsLogger;
 
-    public ProgramService(IHostApplicationLifetime appLifetime, ISettingsLogger settingsLogger)
-    {
+    public ProgramService(IHostApplicationLifetime appLifetime, ISettingsLogger settingsLogger) {
         this.appLifetime = appLifetime;
         this.settingsLogger = settingsLogger;
     }
 
-    public Task StartAsync(CancellationToken cancellationToken)
-    {
-        appLifetime.ApplicationStarted.Register(() =>
-        {
-            try
-            {
+    public Task StartAsync(CancellationToken cancellationToken) {
+        appLifetime.ApplicationStarted.Register(() => {
+            try {
                 settingsLogger.LogSettings();
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
-            }
-            finally
-            {
+            } finally {
                 appLifetime.StopApplication();
             }
         });
@@ -63,8 +51,7 @@ internal sealed class ProgramService : IHostedService
         return Task.CompletedTask;
     }
 
-    public Task StopAsync(CancellationToken cancellationToken)
-    {
+    public Task StopAsync(CancellationToken cancellationToken) {
         return Task.CompletedTask;
     }
 }

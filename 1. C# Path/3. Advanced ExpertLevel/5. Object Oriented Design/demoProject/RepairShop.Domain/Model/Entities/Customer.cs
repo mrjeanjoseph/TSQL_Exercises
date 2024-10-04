@@ -1,13 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities
-{
-    public class Customer
-    {
+namespace RepairShop.Domain.Model.Entities {
+    public class Customer {
         public int Id { get; set; }
 
         [MaxLength(50)]
-        public string FirstName {  get; set; } = null!;
+        public string FirstName { get; set; } = null!;
 
         [MaxLength(50)]
         public string LastName { get; set; } = null!;

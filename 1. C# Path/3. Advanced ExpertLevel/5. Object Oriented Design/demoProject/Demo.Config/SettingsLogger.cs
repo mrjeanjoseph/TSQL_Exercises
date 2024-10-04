@@ -1,23 +1,17 @@
-﻿using Microsoft.Extensions.Options;
+﻿namespace Demo.Config;
 
-namespace Demo.Config;
-
-internal interface ISettingsLogger
-{
+internal interface ISettingsLogger {
     void LogSettings();
 }
 
-internal class SettingsLogger : ISettingsLogger
-{
+internal class SettingsLogger : ISettingsLogger {
     private readonly SampleSettings _sampleSettings;
 
-    public SettingsLogger(SampleSettings sampleSettings)
-    {
+    public SettingsLogger(SampleSettings sampleSettings) {
         _sampleSettings = sampleSettings;
     }
 
-    public void LogSettings()
-    {
+    public void LogSettings() {
         Console.WriteLine($"StringSetting = '{_sampleSettings.StringSetting}'");
         Console.WriteLine($"IntSetting = {_sampleSettings.IntSetting}");
         Console.WriteLine($"BoolSetting = {_sampleSettings.BoolSetting}");

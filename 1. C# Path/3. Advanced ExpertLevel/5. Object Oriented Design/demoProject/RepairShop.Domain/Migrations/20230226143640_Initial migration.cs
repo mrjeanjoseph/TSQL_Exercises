@@ -1,52 +1,43 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace RepairShop.Domain.Migrations
-{
+namespace RepairShop.Domain.Migrations {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
-    {
+    public partial class Initialmigration : Migration {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
+        protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
                 name: "Customers",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     FirstName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     PhoneNumber = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Customers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Parts",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     StockNumber = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
                     Price = table.Column<decimal>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Parts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Vehicles",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CustomerId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -55,8 +46,7 @@ namespace RepairShop.Domain.Migrations
                     Model = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
                     Odometer = table.Column<int>(type: "INTEGER", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Vehicles", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Vehicles_Customers_CustomerId",
@@ -68,14 +58,12 @@ namespace RepairShop.Domain.Migrations
 
             migrationBuilder.CreateTable(
                 name: "RepairOrders",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     VehicleId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_RepairOrders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_RepairOrders_Vehicles_VehicleId",
@@ -87,8 +75,7 @@ namespace RepairShop.Domain.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Quotes",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     RepairOrderId = table.Column<int>(type: "INTEGER", nullable: false),
@@ -96,8 +83,7 @@ namespace RepairShop.Domain.Migrations
                     LaborTotal = table.Column<decimal>(type: "TEXT", nullable: false),
                     ExpiryDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Quotes", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Quotes_RepairOrders_RepairOrderId",
@@ -109,8 +95,7 @@ namespace RepairShop.Domain.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Repairs",
-                columns: table => new
-                {
+                columns: table => new {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Code = table.Column<string>(type: "TEXT", maxLength: 10, nullable: false),
@@ -119,8 +104,7 @@ namespace RepairShop.Domain.Migrations
                     Labor = table.Column<decimal>(type: "TEXT", nullable: false),
                     RepairOrderId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_Repairs", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Repairs_RepairOrders_RepairOrderId",
@@ -131,13 +115,11 @@ namespace RepairShop.Domain.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PartRepair",
-                columns: table => new
-                {
+                columns: table => new {
                     PartsId = table.Column<int>(type: "INTEGER", nullable: false),
                     RepairsId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
-                constraints: table =>
-                {
+                constraints: table => {
                     table.PrimaryKey("PK_PartRepair", x => new { x.PartsId, x.RepairsId });
                     table.ForeignKey(
                         name: "FK_PartRepair_Parts_PartsId",
@@ -225,8 +207,7 @@ namespace RepairShop.Domain.Migrations
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
+        protected override void Down(MigrationBuilder migrationBuilder) {
             migrationBuilder.DropTable(
                 name: "PartRepair");
 

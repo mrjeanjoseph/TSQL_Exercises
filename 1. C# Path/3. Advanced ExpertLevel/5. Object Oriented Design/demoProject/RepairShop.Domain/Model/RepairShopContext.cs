@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RepairShop.Domain.Model.Entities;
 
-namespace RepairShop.Domain.Model
-{
-    public class RepairShopContext : DbContext
-    {
+namespace RepairShop.Domain.Model {
+    public class RepairShopContext : DbContext {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<RepairOrder> RepairOrders { get; set; }
@@ -12,13 +10,11 @@ namespace RepairShop.Domain.Model
         public DbSet<Part> Parts { get; set; }
         public DbSet<Quote> Quotes { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlite($"Filename=C:/Temp/RepairShop.sqlite");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Part>().HasData(
                 new Part { Id = 1, Name = "Brake Pads", StockNumber = "BP001", Price = 29.99M },
                 new Part { Id = 2, Name = "Engine Oil", StockNumber = "OIL4Q", Price = 62.99M },
@@ -53,7 +49,7 @@ namespace RepairShop.Domain.Model
                     new { RepairsId = 6, PartsId = 6 },
                     new { RepairsId = 7, PartsId = 7 },
                     new { RepairsId = 8, PartsId = 8 }
-                    ));
+                ));
         }
     }
 }

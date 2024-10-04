@@ -1,13 +1,9 @@
 ﻿using System.Text;
 
-namespace Demo.Immutability
-{
-    public class AddressHelper
-    {
-        public static string FormatAddress(MailingInfo mailingInfo)
-        {
-            var normalized = NormalizeAddress(mailingInfo) with
-            {
+namespace Demo.Immutability {
+    public class AddressHelper {
+        public static string FormatAddress(MailingInfo mailingInfo) {
+            var normalized = NormalizeAddress(mailingInfo) with {
                 FullName = mailingInfo.FullName.ToUpper(),
             };
 
@@ -15,8 +11,7 @@ namespace Demo.Immutability
             builder.AppendLine(normalized.FullName);
             builder.AppendLine(normalized.Address1);
 
-            if (normalized.Address2 != null)
-            {
+            if (normalized.Address2 != null) {
                 builder.AppendLine(normalized.Address2);
             }
 
@@ -26,10 +21,8 @@ namespace Demo.Immutability
             return builder.ToString();
         }
 
-        private static MailingInfo NormalizeAddress(MailingInfo mailingInfo)
-        {
-            return mailingInfo with
-            {
+        private static MailingInfo NormalizeAddress(MailingInfo mailingInfo) {
+            return mailingInfo with {
                 Address1 = mailingInfo.Address1.ToUpper(),
                 Address2 = mailingInfo.Address2?.ToUpper(),
                 City = mailingInfo.City.ToUpper(),

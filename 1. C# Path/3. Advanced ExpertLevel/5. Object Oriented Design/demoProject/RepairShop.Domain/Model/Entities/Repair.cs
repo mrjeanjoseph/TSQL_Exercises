@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities
-{
-    public class Repair
-    {
+namespace RepairShop.Domain.Model.Entities {
+    public class Repair {
         public int Id { get; set; }
 
         [MaxLength(10)]

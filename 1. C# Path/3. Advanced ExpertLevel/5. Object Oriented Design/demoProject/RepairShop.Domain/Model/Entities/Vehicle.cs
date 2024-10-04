@@ -1,9 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities
-{
-    public class Vehicle
-    {
+namespace RepairShop.Domain.Model.Entities {
+    public class Vehicle {
         public int Id { get; set; }
         public Customer Customer { get; set; } = null!;
         public int Year { get; set; }

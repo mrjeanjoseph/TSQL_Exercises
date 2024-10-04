@@ -1,9 +1,6 @@
-﻿namespace Demo.CarWorld.Sensors
-{
-    public class AirTemperatureSensor
-    {
-        public AirTemperatureSensor()
-        {
+﻿namespace Demo.CarWorld.Sensors {
+    public class AirTemperatureSensor {
+        public AirTemperatureSensor() {
         }
     }
 }

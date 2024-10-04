@@ -1,6 +1,4 @@
-﻿namespace Demo.Patterns.Builder
-{
-    public abstract class Component
-    {
+﻿namespace Demo.Patterns.Builder {
+    public abstract class Component {
     }
 }

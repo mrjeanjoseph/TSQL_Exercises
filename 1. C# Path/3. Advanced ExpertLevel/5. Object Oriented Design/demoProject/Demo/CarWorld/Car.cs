@@ -1,10 +1,8 @@
 ﻿using Demo.CarWorld.Controls;
 using Demo.CarWorld.Electronics;
 
-namespace Demo.CarWorld
-{
-    public class Car : IStartable
-    {
+namespace Demo.CarWorld {
+    public class Car : IStartable {
         public string Make { get; set; } = "";
         public string Model { get; set; } = "";
         public EngineControlModule EngineControlModule { get; set; }
@@ -14,8 +12,7 @@ namespace Demo.CarWorld
         public SteeringWheel SteeringWheel { get; set; } = new SteeringWheel();
         public Throttle Throttle { get; set; } = new Throttle();
 
-        public Car(EngineControlModule engineControlModule)
-        {
+        public Car(EngineControlModule engineControlModule) {
             EngineControlModule = engineControlModule;
         }
 

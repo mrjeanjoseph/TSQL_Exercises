@@ -1,16 +1,12 @@
 ﻿using Demo.Patterns.Strategy;
 using NUnit.Framework;
 
-namespace Tests.Strategy
-{
+namespace Tests.Strategy {
     [TestFixture]
-    public class Given_a_PointOfSale
-    {
+    public class Given_a_PointOfSale {
         [Test]
-        public void Then_the_best_discount_is_chosen_for_the_order()
-        {
-            var order = new Order
-            {
+        public void Then_the_best_discount_is_chosen_for_the_order() {
+            var order = new Order {
                 Items =
                 {
                     new OrderItem { Quantity = 3, Price = 10.0m },
@@ -19,8 +15,7 @@ namespace Tests.Strategy
                 }
             };
 
-            var sut = new PointOfSale
-            {
+            var sut = new PointOfSale {
                 Discounts =
                 {
                     new HighestPriceItemDiscount { Percentage = 0.5m },

@@ -2,14 +2,11 @@
 
 #pragma warning disable NUnit2015
 
-namespace Tests.ImmutabilityTests
-{
+namespace Tests.ImmutabilityTests {
     [TestFixture]
-    public class StringImmutabilityTests
-    {
+    public class StringImmutabilityTests {
         [Test]
-        public void Strings_are_immutable()
-        {
+        public void Strings_are_immutable() {
             var string1 = "Hello";
             var string2 = string1;
 
@@ -18,7 +15,7 @@ namespace Tests.ImmutabilityTests
 
             string1 = string1 + " World";
 
-            Assert.AreNotEqual(string1, string2); 
+            Assert.AreNotEqual(string1, string2);
             Assert.AreNotSame(string1, string2);
         }
     }
