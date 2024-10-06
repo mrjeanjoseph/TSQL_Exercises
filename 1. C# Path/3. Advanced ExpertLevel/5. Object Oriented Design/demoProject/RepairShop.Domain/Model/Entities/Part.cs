@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities {
-    public class Part {
-        public int Id { get; set; }
-        public ICollection<Repair> Repairs { get; set; } = new HashSet<Repair>();
+namespace RepairShop.Domain.Model.Entities;
 
-        [MaxLength(50)]
-        public string Name { get; set; } = string.Empty;
+public class Part {
+    public int Id { get; set; }
 
-        [MaxLength(10)]
-        public string StockNumber { get; set; } = string.Empty;
+    public ICollection<Repair> Repairs { get; set; } = new HashSet<Repair>();
 
-        public decimal Price { get; set; }
-    }
+    [MaxLength(50)]
+    public string Name { get; set; } = string.Empty;
+
+    [MaxLength(10)]
+    public string StockNumber { get; set; } = string.Empty;
+
+    public decimal Price { get; set; }
 }

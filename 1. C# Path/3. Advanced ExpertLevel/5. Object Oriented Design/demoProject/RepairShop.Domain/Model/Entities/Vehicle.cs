@@ -1,17 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RepairShop.Domain.Model.Entities {
-    public class Vehicle {
-        public int Id { get; set; }
-        public Customer Customer { get; set; } = null!;
-        public int Year { get; set; }
+namespace RepairShop.Domain.Model.Entities;
 
-        [MaxLength(50)]
-        public string Make { get; set; } = string.Empty;
+public class Vehicle {
+    public int Id { get; set; }
 
-        [MaxLength(50)]
-        public string Model { get; set; } = string.Empty;
+    public Customer Customer { get; set; } = null!;
 
-        public int Odometer { get; set; }
-    }
+    public int Year { get; set; }
+
+    [MaxLength(50)]
+    public string Make { get; set; } = string.Empty;
+
+    [MaxLength(50)]
+    public string Model { get; set; } = string.Empty;
+
+    public int Odometer { get; set; }
 }
