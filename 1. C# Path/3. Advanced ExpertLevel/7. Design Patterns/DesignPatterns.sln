@@ -101,6 +101,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "23 - Interpreter", "23 - In
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interpreter", "Interpreter\Interpreter.csproj", "{39C0A16A-B9F1-444B-9D5D-F46BBB84F746}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnterprisePatterns", "..\..\..\..\c-sharp-10-design-patterns\27\demos\end\EnterprisePatterns\EnterprisePatterns.csproj", "{8907B89F-8863-49D0-B1D3-4C85904C3A9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -199,6 +201,10 @@ Global
 		{39C0A16A-B9F1-444B-9D5D-F46BBB84F746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39C0A16A-B9F1-444B-9D5D-F46BBB84F746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39C0A16A-B9F1-444B-9D5D-F46BBB84F746}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8907B89F-8863-49D0-B1D3-4C85904C3A9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8907B89F-8863-49D0-B1D3-4C85904C3A9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8907B89F-8863-49D0-B1D3-4C85904C3A9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8907B89F-8863-49D0-B1D3-4C85904C3A9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
