@@ -1,0 +1,18 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "[!M]*/**": true,
+        "M[!e]*/**": true,
+        "Me[!d]*/**": true,
+        "Med[!i]*/**": true,
+        "Medi[!a]*/**": true,
+        "Media[!t]*/**": true,
+        "Mediat[!o]*/**": true,
+        "Mediato[!r]*/**": true
+    }
+}
