@@ -1,0 +1,191 @@
+Module 8 Snippets
+-----------------
+
+Demo 1 
+------
+
+
+int a = 42;
+int aCopy = a;
+Console.WriteLine($"Value of a: {a} and value of copy of a: {aCopy}");
+aCopy = 100;
+Console.WriteLine($"Value of a: {a} and value of copy of a: {aCopy}");
+
+Employee testEmployee = bethany;
+testEmployee.firstName = "Gill";
+
+testEmployee.DisplayEmployeeDetails();
+bethany.DisplayEmployeeDetails();
+
+
+
+Demo 2
+------
+
+
+public int CalculateBonus(int bonus)
+{
+
+	if (numberOfHoursWorked > 10)
+		bonus *= 2;
+
+	Console.WriteLine($"The employee got a bonus of {bonus}");
+	return bonus;
+}
+
+
+public int CalculateBonusAndBonusTax(int bonus, ref int bonusTax)
+{
+
+	if (numberOfHoursWorked > 10)
+		bonus *= 2;
+
+	if (bonus >= 200)
+	{
+		bonusTax = bonus / 10;
+		bonus -= bonusTax;
+	}
+
+	Console.WriteLine($"The employee got a bonus of {bonus} and the tax on the bonus is {bonusTax}");
+	return bonus;
+}
+		
+
+int minimumBonus = 100;
+int bonusTax = 0;
+int receivedBonus = bethany.CalculateBonusAndBonusTax(minimumBonus, ref bonusTax);
+Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax} and {bethany.firstName} has received a bonus of {receivedBonus }");
+
+Demo 3
+------
+
+
+public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
+{
+	bonusTax = 0;
+	if (numberOfHoursWorked > 10)
+		bonus *= 2;
+
+	if (bonus >= 200)
+	{
+		bonusTax = bonus / 10;
+		bonus -= bonusTax;
+	}
+
+	Console.WriteLine($"The employee got a bonus of {bonus} and the tax on the bonus is {bonusTax}");
+	return bonus;
+}
+		
+
+
+int minimumBonus = 100;
+int bonusTax;
+int receivedBonus = bethany.CalculateBonusAndBonusTax(minimumBonus, out bonusTax);
+Console.WriteLine($"The minimum bonus is {minimumBonus}, the bonus tax is {bonusTax} and {bethany.firstName} has received a bonus of {receivedBonus }");
+
+
+Demo 4
+------
+
+
+string name = "Bethany";
+string anotherName = name;
+name += " Smith";
+
+Console.Write("Name: " + name);
+Console.WriteLine("Another name: " + anotherName);
+			
+
+for (int i = 0; i < 2500; i++)
+{
+	indexes += i.ToString();
+}
+
+builder.Append("Last name: ");
+builder.AppendLine(lastName);
+builder.Append("First name: ");
+builder.Append(firstName);
+string result = builder.ToString();
+
+StringBuilder builder2 = new StringBuilder();
+
+for (int i = 0; i < 2500; i++)
+{
+	builder2.Append(i);
+	builder2.Append(" ");
+}
+string list = builder2.ToString();
+
+
+			
+Demo 5
+------
+
+public string ConvertToJson()
+{
+	string json = JsonConvert.SerializeObject(this);
+
+	return json;
+}
+
+		
+
+Demo 6
+------
+
+
+enum EmployeeType 
+{
+	Sales,
+	Manager,
+	Research,
+	StoreManager
+}
+	
+	
+public Employee(string first, string last, string em, DateTime bd, double rate, EmployeeType empType)
+{
+	firstName = first;
+	lastName = last;
+	email = em;
+	birthDay = bd;
+	hourlyRate = rate;
+	employeeType = empType;
+}
+
+public Employee(string first, string last, string em, DateTime bd) : this(first, last, em, bd, 0, EmployeeType.StoreManager)
+{
+}
+
+if (employeeType == EmployeeType.Manager)
+{
+	Console.WriteLine($"An extra was added to the wage since {firstName} is a manager!");
+	wage = numberOfHoursWorked * hourlyRate * 1.25;
+}
+else
+{
+	wage = numberOfHoursWorked * hourlyRate ;
+}
+
+
+
+Demo 7
+------
+
+	
+struct WorkTask
+{
+	public string description;
+	public int hours;
+
+	public void PerformWorkTask()
+	{
+		Console.WriteLine($"Task {description} of {hours} hour(s) has been performed.");
+	}
+}
+
+
+WorkTask task;
+task.description = "Bake delicious pies";
+task.hours = 3;
+task.PerformWorkTask();

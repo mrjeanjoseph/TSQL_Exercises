@@ -1,0 +1,116 @@
+Module 7 Snippets
+-----------------
+
+Demo 1 
+------
+
+
+public void PerformWork()
+{
+	numberOfHoursWorked++;
+
+	Console.WriteLine($"{firstName} {lastName} has worked for {numberOfHoursWorked} hour(s)!");
+}
+
+
+
+public void PerformWork(int numberOfHours)
+{
+	numberOfHoursWorked += numberOfHours;
+
+	Console.WriteLine($"{firstName} {lastName} has worked for {numberOfHours} hour(s)!");
+}
+
+public double ReceiveWage(bool resetHours = true)
+{
+	wage = numberOfHoursWorked * hourlyRate;
+
+	Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
+
+	if (resetHours)
+		numberOfHoursWorked = 0;
+
+	return wage;
+}
+
+public void DisplayEmployeeDetails()
+{
+	Console.WriteLine($"\nFirst name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}\nBirthday: \t{birthDay.ToShortDateString()}\n");
+}
+	
+	
+public void PerformWork()
+{
+	PerformWork(1);
+}
+		
+		
+const int minimalHoursWorkedUnit = 1;
+
+public void PerformWork()
+{
+	PerformWork(minimalHoursWorkedUnit);
+}
+		
+	
+		
+Demo 2
+------
+
+public Employee(string first, string last, string em, DateTime bd, double rate)
+{
+	firstName = first;
+	lastName = last;
+	email = em;
+	birthDay = bd;
+	hourlyRate = rate;
+}
+		
+		
+
+public Employee(string first, string last, string em, DateTime bd): this(first, last, em, bd, 0)
+{
+}
+
+
+
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+
+
+double receivedWageBethany = bethany.ReceiveWage(true);
+Console.WriteLine($"Wage paid (message from Program): {receivedWageBethany}");
+
+
+Demo 3
+------
+
+Console.WriteLine("Creating an employee");
+Console.WriteLine("--------------------\n");
+//Here we are using new without specifying the type since it's known on the left-hand side
+
+
+
+Employee george = new("George", "Jones", "george@snowball.be", new DateTime(1984, 3, 28), 30);
+
+Dan methods aanroepen
+george.DisplayEmployeeDetails();
+george.PerformWork();
+george.PerformWork();
+george.PerformWork(3);
+george.PerformWork();
+george.PerformWork(8);
+
+var receivedWageGeorge = george.ReceiveWage(true);
+
+
+bethany.firstName = "John";
+bethany.hourlyRate = 10;
+
+bethany.DisplayEmployeeDetails();
+bethany.PerformWork();
+bethany.PerformWork(12);
+bethany.PerformWork();
+bethany.ReceiveWage();
