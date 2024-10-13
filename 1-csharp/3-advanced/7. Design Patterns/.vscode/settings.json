@@ -5,27 +5,6 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "[!C]*/**": true,
-        "C[!h]*/**": true,
-        "Ch[!a]*/**": true,
-        "Cha[!i]*/**": true,
-        "Chai[!n]*/**": true,
-        "Chain[!O]*/**": true,
-        "ChainO[!f]*/**": true,
-        "ChainOf[!R]*/**": true,
-        "ChainOfR[!e]*/**": true,
-        "ChainOfRe[!s]*/**": true,
-        "ChainOfRes[!p]*/**": true,
-        "ChainOfResp[!o]*/**": true,
-        "ChainOfRespo[!n]*/**": true,
-        "ChainOfRespon[!s]*/**": true,
-        "ChainOfRespons[!i]*/**": true,
-        "ChainOfResponsi[!b]*/**": true,
-        "ChainOfResponsib[!i]*/**": true,
-        "ChainOfResponsibi[!l]*/**": true,
-        "ChainOfResponsibil[!i]*/**": true,
-        "ChainOfResponsibili[!t]*/**": true,
-        "ChainOfResponsibilit[!y]*/**": true
+        "**/Thumbs.db": true
     }
 }
