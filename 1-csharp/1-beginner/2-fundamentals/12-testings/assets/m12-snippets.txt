@@ -1,0 +1,35 @@
+Module 12 Snippets
+------------------
+ 
+Demo 1
+------
+
+
+Console.Write("How many hours do we need to register for Bethany?");
+int numberOfHours = 0;
+string input = Console.ReadLine();
+numberOfHours = int.Parse(input);  
+
+bethany.DisplayEmployeeDetails();
+bethany.PerformWork();
+bethany.PerformWork(numberOfHours);
+
+
+
+Demo 2
+------
+
+employee.PerformWork(numberOfHoursWorked);
+
+
+Assert.Equal(numberOfHoursWorked, employee.NumberOfHoursWorked);
+
+[Fact]
+public void PerformWork_Adds_DefaultNumberOfHours_IfNoValueSpecified()
+{
+	Employee employee = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+
+	employee.PerformWork();
+
+	Assert.Equal(1, employee.NumberOfHoursWorked);
+}
