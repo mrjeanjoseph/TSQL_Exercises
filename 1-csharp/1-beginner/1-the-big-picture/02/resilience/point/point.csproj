@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Point2D.cs" />
+    <Compile Remove="Point3DString.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Point2D.cs" />
+  </ItemGroup>
+
+</Project>

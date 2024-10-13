@@ -15,8 +15,6 @@ public interface IChatRoom
     void Send(string from, string message);
     void Send(string from, string to, string message);
     void SendTo<T>(string from, string message) where T : TeamMember;
-
-
 }
 
 /// <summary>
@@ -61,9 +59,7 @@ public abstract class TeamMember
 /// </summary>
 public class Lawyer : TeamMember
 {
-    public Lawyer(string name) : base(name)
-    {
-    }
+    public Lawyer(string name) : base(name) { }
 
     public override void Receive(string from, string message)
     {
@@ -77,9 +73,7 @@ public class Lawyer : TeamMember
 /// </summary>
 public class AccountManager : TeamMember
 {
-    public AccountManager(string name) : base(name)
-    {
-    }
+    public AccountManager(string name) : base(name) { }
 
     public override void Receive(string from, string message)
     {

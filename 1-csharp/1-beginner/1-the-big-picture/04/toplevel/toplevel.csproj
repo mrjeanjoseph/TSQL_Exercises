@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Program-after.cs" />
+    <Compile Remove="Program-before.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Program-after.cs" />
+    <None Include="Program-before.cs" />
+  </ItemGroup>
+
+</Project>

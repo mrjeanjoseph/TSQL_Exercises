@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Point-after-1.cs" />
+    <Compile Remove="Point-after-2.cs" />
+    <Compile Remove="Point-after-3.cs" />
+    <Compile Remove="Point-before.cs" />
+    <Compile Remove="Program.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Point-after-1.cs" />
+    <None Include="Point-after-2.cs" />
+    <None Include="Point-after-3.cs" />
+    <None Include="Point-before.cs" />
+    <None Include="Program.cs" />
+  </ItemGroup>
+
+</Project>

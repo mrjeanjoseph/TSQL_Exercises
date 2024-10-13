@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>relational_patterns</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Person-before.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Person-before.cs" />
+  </ItemGroup>
+
+</Project>
