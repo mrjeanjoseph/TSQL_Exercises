@@ -1,0 +1,37 @@
+Module 6 Snippets
+-----------------
+
+ 
+Demo 1
+------
+
+public static void UsingSimpleStrings()
+{
+	string firstName = "Bethany";
+	string lastName = "Smith";
+	string s;
+	s = firstName;
+	var userName = "BethanyS";
+	userName = userName.ToLower();
+
+	userName = string.Empty;
+	userName = "";//identical to string.Empty;
+}
+		
+		
+
+
+Demo 5
+------
+
+
+int wageValue;
+if (int.TryParse(wage, out wageValue))
+	Console.WriteLine("Parsing success: " + wageValue);
+else
+	Console.WriteLine("Parsing failed");
+
+
+string hireDateString = "12/12/2022";
+            DateTime hireDate = DateTime.Parse(hireDateString);
+            Console.WriteLine("Parsed date: " + hireDate);	
