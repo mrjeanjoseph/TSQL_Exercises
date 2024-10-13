@@ -1,0 +1,693 @@
+Module 11 Snippets 
+------------------
+ 
+
+Demo 1
+------
+
+public string FirstName
+{
+	get { return firstName; }
+	set
+	{
+		firstName = value;
+	}
+}
+
+	
+
+	  
+	          
+private string lastName;
+private string email;
+
+private int numberOfHoursWorked;
+private double wage;
+private double? hourlyRate;
+
+private DateTime birthDay;
+private const int minimalHoursWorkedUnit = 1;
+private EmployeeType employeeType;
+
+
+public string FirstName
+{
+	get { return firstName; }
+	set
+	{
+		firstName = value;
+	}
+}
+
+public string LastName
+{
+	get { return lastName; }
+	set
+	{
+		lastName = value;
+	}
+}
+
+public string Email
+{
+	get { return email; }
+	set
+	{
+		email = value;
+	}
+}
+
+public int NumberOfHoursWorked
+{
+	get { return numberOfHoursWorked; }
+	set
+	{
+		numberOfHoursWorked = value;
+	}
+}
+
+public double Wage
+{
+	get { return wage; }
+	set
+	{
+		wage = value;
+	}
+	
+}
+
+public double? HourlyRate
+{
+	get { return hourlyRate; }
+	set
+	{
+		if (hourlyRate < 0)//this should always be higher than 0
+		{
+			hourlyRate = 0;
+		}
+		else
+		{
+			hourlyRate = value;
+
+		}
+	}
+}
+
+public DateTime BirthDay
+{
+	get { return birthDay; }
+	set
+	{
+		birthDay = value;
+	}
+}
+
+public EmployeeType EmployeeType
+{
+	get
+	{ return employeeType; }
+
+	set
+	{
+		employeeType = value;
+	}
+}
+		
+
+
+public string FirstName
+{
+	get { return firstName; }
+	set
+	{
+		firstName = value;
+	}
+}
+
+public string LastName
+{
+	get { return lastName; }
+	set
+	{
+		lastName = value;
+	}
+}
+
+public string Email
+{
+	get { return email; }
+	set
+	{
+		email = value;
+	}
+}
+
+public int NumberOfHoursWorked
+{
+	get { return numberOfHoursWorked; }
+	//set
+	//{
+	//    numberOfHoursWorked = value;
+	//}
+	private set
+	{
+		numberOfHoursWorked = value;
+	}
+}
+
+public double Wage
+{
+	get { return wage; }
+	//set
+	//{
+	//    wage = value;
+	//}
+	private set
+	{
+		wage = value;
+	}
+}
+
+public double? HourlyRate
+{
+	get { return hourlyRate; }
+	set
+	{
+		if (hourlyRate < 0)//this should always be higher than 0
+		{
+			hourlyRate = 0;
+		}
+		else
+		{
+			hourlyRate = value;
+
+		}
+	}
+}
+
+public DateTime BirthDay
+{
+	get { return birthDay; }
+	set
+	{
+		birthDay = value;
+	}
+}
+
+public EmployeeType EmployeeType
+{
+	get
+	{ return employeeType; }
+
+	set
+	{
+		employeeType = value;
+	}
+}
+
+
+
+
+public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, EmployeeType employeeType)
+{
+    FirstName = firstName;
+    LastName = lastName;
+    Email = email;
+    BirthDay = birthDay;
+    HourlyRate = hourlyRate ?? 10;
+    EmployeeType = employeeType;
+}
+
+public Employee(string firstName, string lastName, string email, DateTime birthDay)
+            : this(firstName, lastName, email, birthDay, 0, EmployeeType.StoreManager)
+        {
+}
+
+
+
+public void PerformWork()
+{
+	PerformWork(minimalHoursWorkedUnit);
+}
+
+public void PerformWork(int numberOfHours)
+{
+	NumberOfHoursWorked += numberOfHours;
+
+	Console.WriteLine($"{FirstName} {LastName} has worked for {numberOfHours} hour(s)!");
+}
+
+public int CalculateBonus(int bonus)
+{
+
+	if (NumberOfHoursWorked > 10)
+		bonus *= 2;
+
+	Console.WriteLine($"The employee got a bonus of {bonus}");
+	return bonus;
+}
+
+public int CalculateBonusAndBonusTax(int bonus, out int bonusTax)
+{
+	bonusTax = 0;
+	if (NumberOfHoursWorked > 10)
+		bonus *= 2;
+
+	if (bonus >= 200)
+	{
+		bonusTax = bonus / 10;
+		bonus -= bonusTax;
+	}
+
+	Console.WriteLine($"The employee got a bonus of {bonus} and the tax on the bonus is {bonusTax}");
+	return bonus;
+}
+
+
+public double ReceiveWage(bool resetHours = true)
+{
+	double wageBeforeTax = 0.0;
+
+	if (EmployeeType == EmployeeType.Manager)
+	{
+		Console.WriteLine($"An extra was added to the wage since {firstName} is a manager!");
+		wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value * 1.25;
+	}
+	else
+	{
+		wageBeforeTax = NumberOfHoursWorked * HourlyRate.Value;
+	}
+
+	double taxAmount = wageBeforeTax * taxRate;
+
+	wage = wageBeforeTax - taxAmount;
+
+	Console.WriteLine($"{FirstName} {LastName} has received a wage of {Wage} for {NumberOfHoursWorked} hour(s) of work.");
+
+	if (resetHours)
+		NumberOfHoursWorked = 0;
+
+	return Wage;
+}
+
+public double CalculateWage()
+{
+	WageCalculations wageCalculations = new WageCalculations();
+
+	double calculateValue = wageCalculations.ComplexWageCalculation(wage, taxRate, 3, 42);
+
+	return calculateValue;
+
+}
+
+public string ConvertToJson()
+{
+	string json = JsonConvert.SerializeObject(this);
+
+	return json;
+}
+
+public static void DisplayTaxRate()
+{
+	Console.WriteLine($"The current tax rate is {taxRate}");
+}
+
+public void DisplayEmployeeDetails()
+{
+	Console.WriteLine($"\nFirst name: \t{FirstName}\nLast name: \t{LastName}\nEmail: \t\t{Email}\nBirthday: \t{BirthDay.ToShortDateString()}\nEmployee type: \t{EmployeeType}\n");
+}
+
+
+bethany.FirstName = "John";
+bethany.HourlyRate = 10;
+
+
+Demo 2
+------
+
+public class Manager : Employee
+    {
+	}
+	
+
+
+public Manager(string first, string last, string em, DateTime bd, double? rate) : base(first, last, em, bd, rate)
+        {
+        }
+
+Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+
+
+mary.DisplayEmployeeDetails();
+mary.PerformWork(25);
+mary.PerformWork();
+mary.PerformWork();
+mary.ReceiveWage();
+
+
+public void AttendManagementMeeting()
+{
+	NumberOfHoursWorked += 10;
+	Console.WriteLine($"Manager {FirstName} {LastName} is now attending a long meeting that could have been an email!");
+}
+		
+
+
+public int NumberOfHoursWorked
+{
+	get { return numberOfHoursWorked; }
+	//set
+	//{
+	//    numberOfHoursWorked = value;
+	//}
+	protected set
+	{
+		numberOfHoursWorked = value;
+	}
+}
+
+mary.AttendManagementMeeting();
+
+
+
+
+internal class StoreManager : Employee
+{
+	public StoreManager(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+	{
+	}
+}
+	
+internal class Developer : Employee
+{
+	private string currentProject;
+
+	public string CurrentProject
+	{
+		get { return currentProject; }
+		set
+		{
+			currentProject = value;
+		}
+	}
+
+	public Developer(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+	{
+	}
+}
+	
+
+internal class Researcher : Employee
+{
+   
+	public Researcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+	{
+	}
+}
+	
+
+internal class JuniorResearcher : Researcher
+{
+	public JuniorResearcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+	{
+	}
+}
+
+
+
+
+private int numberOfPieTastesInvented = 0;
+public int NumberOfPieTastesInvented
+{
+	get 
+	{
+		return numberOfPieTastesInvented; 
+	}
+	private set
+	{
+		numberOfPieTastesInvented = value;
+	}
+}
+
+public Researcher(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate) : base(firstName, lastName, email, birthDay, hourlyRate)
+{
+}
+
+
+public void ResearchNewPieTastes(int researchHours)
+{
+	NumberOfHoursWorked += researchHours;
+
+	if (new Random().Next(100) > 50)//we'll leave it to chance!
+	{
+		NumberOfPieTastesInvented++;
+		
+		Console.WriteLine($"Researcher {FirstName} {LastName} has invented a new pie taste! Total number of pies invented: {NumberOfPieTastesInvented}");
+	}
+	else
+	{ 
+		Console.WriteLine($"Researcher {FirstName} {LastName} is working still on a new pie taste!");
+	}
+}
+	
+	
+Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+
+bethany.DisplayEmployeeDetails();
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+bethany.ReceiveWage();
+
+mary.DisplayEmployeeDetails();
+mary.PerformWork();
+mary.PerformWork(11);
+mary.PerformWork();
+mary.ReceiveWage();
+
+
+mary.AttendManagementMeeting();
+bobJunior.ResearchNewPieTastes(5);
+bobJunior.ResearchNewPieTastes(5);
+
+
+
+
+Demo 3
+------
+
+
+Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+Employee mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+
+bethany.DisplayEmployeeDetails();
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+bethany.ReceiveWage();
+
+mary.DisplayEmployeeDetails();
+mary.PerformWork();
+mary.PerformWork(11);
+mary.PerformWork();
+mary.ReceiveWage();
+
+
+//JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+Researcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+
+bobJunior.ResearchNewPieTastes(5);
+bobJunior.ResearchNewPieTastes(5);
+
+bobJunior.ReceiveWage();
+
+
+
+Demo 4
+------
+
+
+internal class Address
+{
+	private string street;
+	private string houseNumber;
+	private string zipCode;
+	private string city;
+
+	public Address(string street, string houseNumber, string zipCode, string city)
+	{
+		Street = street;
+		HouseNumber = houseNumber;
+		ZipCode = zipCode;
+		City = city;
+	}
+
+	public string Street
+	{
+		get { return street; }
+		set
+		{
+			street = value;
+		}
+	}
+	public string HouseNumber
+	{
+		get { return houseNumber; }
+		set
+		{
+			houseNumber = value;
+		}
+	}
+	public string ZipCode
+	{
+		get { return zipCode; }
+		set
+		{
+			zipCode = value;
+		}
+	}
+	public string City
+	{
+		get
+		{
+			return city;
+		}
+		set
+		{
+			city = value;
+		}
+	}
+}
+
+
+
+private Address address;
+public Address Address
+{
+	get { return address; }
+	set
+	{
+		address = value;
+	}
+}
+	
+public Employee(string firstName, string lastName, string email, DateTime birthDay, double? hourlyRate, string street, string houseNumber, string zip, string city)
+{
+	FirstName = firstName;
+	LastName = lastName;
+	Email = email;
+	BirthDay = birthDay;
+	HourlyRate = hourlyRate ?? 10;
+	Address = new Address(street, houseNumber, city, city);
+}
+
+
+
+Employee jake = new Employee("Jake", "Nicols", "jake@snowball.be", new DateTime(1995, 8, 16), 25, "New street", "123", "123456", "Pie Ville");
+string streetName = jake.Address.Street;
+Console.WriteLine($"{jake.FirstName} lives on {jake.Address.Street}");
+
+
+
+Address newAddress = new Address("Another street", "444", "999999", "Donut town");
+jake.Address = newAddress;
+Console.WriteLine($"{jake.FirstName} moved to {jake.Address.Street} in {jake.Address.City}");
+
+
+Demo 5
+-----
+
+
+
+public void GiveBonus()
+{
+	Console.WriteLine($"{FirstName} {LastName} received a generic bonus of 100!");
+}
+	
+public virtual void GiveBonus()
+{
+	Console.WriteLine($"{FirstName} {LastName} received a generic bonus of 100!");
+}
+
+
+public override void GiveBonus()
+{
+	if (NumberOfHoursWorked > 5)
+		Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 500!");
+	else
+		Console.WriteLine($"Manager {FirstName} {LastName} received a management bonus of 250!");
+}
+
+Employee bethany = new StoreManager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+Manager mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+StoreManager kevin = new StoreManager("Kevin", "Marks", "kevin@snowball.be", new DateTime(1953, 12, 12), 10);
+StoreManager kate = new StoreManager("Kate", "Greggs", "kate@snowball.be", new DateTime(1993, 8, 8), 10);
+
+List<Employee> employees = new List<Employee>();
+employees.Add(bethany);
+employees.Add(mary);
+employees.Add(bobJunior);
+employees.Add(kevin);
+employees.Add(kate);
+
+
+foreach (var employee in employees)
+{
+    employee.PerformWork();
+    employee.ReceiveWage();
+    employee.DisplayEmployeeDetails();
+    employee.GiveBonus();
+    //employee.AttendManagementMeeting();
+}
+
+
+
+Demo 6
+------
+
+
+public interface IEmployee
+{
+	double ReceiveWage();
+	void GiveBonus();
+	void PerformWork();
+	void StopWorking();
+	void DisplayEmployeeDetails();
+}
+	
+
+public void GiveCompliment()
+{
+	Console.WriteLine($"You've done a great job, {FirstName}");
+}
+		
+
+IEmployee testEmployee = new IEmployee();
+
+IEmployee kan overal gebruikt worden, bevat alle methods?
+
+IEmployee bethany = new StoreManager("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), 25);
+IEmployee mary = new Manager("Mary", "Jones", "mary@snowball.be", new DateTime(1965, 1, 16), 30);
+JuniorResearcher bobJunior = new JuniorResearcher("Bob", "Spencer", "bob@snowball.be", new DateTime(1988, 1, 23), 17);
+IEmployee kevin = new StoreManager("Kevin", "Marks", "kevin@snowball.be", new DateTime(1953, 12, 12), 10);
+IEmployee kate = new StoreManager("Kate", "Greggs", "kate@snowball.be", new DateTime(1993, 8, 8), 10);
+
+
+List<IEmployee> employees = new List<IEmployee>();
+employees[0] = bethany;
+employees[1] = mary;
+employees[2] = bobJunior;
+employees[3] = kevin;
+employees[4] = kate;
+
+foreach (var employee in employees)
+{
+    employee.PerformWork();
+    employee.ReceiveWage();
+    employee.DisplayEmployeeDetails();
+    employee.GiveBonus();
+    //employee.AttendManagementMeeting();
+}
