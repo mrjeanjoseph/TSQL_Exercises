@@ -1,0 +1,209 @@
+Module 9 Snippets
+-----------------
+
+
+Demo 1 
+------
+
+
+class Account
+public class Account
+{
+	private string accountNumber;
+
+	public string AccountNumber
+	{
+		get { return accountNumber; }
+		set
+		{
+			accountNumber = value;
+		}
+	}
+
+}
+
+class Customer
+
+public class Customer
+{
+	private string customerId;
+	private string name;
+
+	public string CustomerId
+	{
+		get { return customerId; }
+		set
+		{
+			customerId = value;
+		}
+	}
+	public string Name
+	{
+		get { return name; }
+		set
+		{
+			name = value;
+		}
+	}
+
+}
+	
+
+Demo 2
+------
+
+
+
+public double ReceiveWage(bool resetHours = true)
+{
+	double wageBeforeTax = 0.0;
+
+	if (employeeType == EmployeeType.Manager)
+	{
+		Console.WriteLine($"An extra was added to the wage since {firstName} is a manager!");
+		wageBeforeTax = numberOfHoursWorked * hourlyRate * 1.25;
+	}
+	else
+	{
+		wageBeforeTax = numberOfHoursWorked * hourlyRate;
+	}
+
+	double taxAmount = wageBeforeTax * taxRate;
+
+	wage = wageBeforeTax - taxAmount;
+
+	Console.WriteLine($"{firstName} {lastName} has received a wage of {wage} for {numberOfHoursWorked} hour(s) of work.");
+
+	if (resetHours)
+		numberOfHoursWorked = 0;
+
+	return wage;
+}
+
+
+
+public void DisplayEmployeeDetails()
+{
+	Console.WriteLine($"\nFirst name: \t{firstName}\nLast name: \t{lastName}\nEmail: \t\t{email}\nBirthday: \t{birthDay.ToShortDateString()}\nTax rate: \t{taxRate}");
+}
+	
+
+Console.WriteLine("Creating an employee");
+Console.WriteLine("--------------------\n");
+
+Employee bethany = new Employee("Bethany", "Smith", "bethany@snowball.be", new DateTime(1979, 1, 16), EmployeeType.Manager, 25);
+Employee george = new Employee("George", "Jones", "george@snowball.be", new DateTime(1984, 3, 28), EmployeeType.Research, 30);
+
+
+#region First run Bethany
+
+bethany.PerformWork();
+bethany.PerformWork(5);
+bethany.PerformWork();
+bethany.ReceiveWage();
+bethany.DisplayEmployeeDetails();
+
+#endregion
+
+
+#region First run George
+
+george.PerformWork(10);
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
+
+#endregion
+
+
+Employee.taxRate = 0.02;//woohoo, less money to pay
+
+
+#region Second run Bethany
+
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.PerformWork();
+bethany.ReceiveWage();
+bethany.DisplayEmployeeDetails();
+
+#endregion
+
+#region Second run George
+
+george.PerformWork();
+george.PerformWork();
+george.PerformWork();
+george.ReceiveWage();
+george.DisplayEmployeeDetails();
+
+#endregion
+			
+			
+			
+
+public static void DisplayTaxRate()
+{
+	Console.WriteLine($"The current tax rate is {taxRate}");
+}
+		
+
+
+
+Demo 3
+------
+
+
+public Employee(string first, string last, string em, DateTime bd, EmployeeType empType, double? rate)
+{
+	FirstName = first;
+	LastName = last;
+	Email = em;
+	BirthDay = bd;
+	EmployeeType = empType;
+	HourlyRate = rate ?? 10;
+	//maxAmountHoursWorked = 100;//not allowed
+}
+		
+		
+hourlyRate = rate ?? 10;
+			
+
+Demo 4
+------
+
+
+List<Employee> employees = new List<Employee>();
+for (int i = 0; i < 10000000; i++)
+{
+    Employee randomEmployee = new Employee(Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), Guid.NewGuid().ToString(), new DateTime(1979, 1, 16), null, EmployeeType.StoreManager);  
+    employees.Add(randomEmployee);
+}
+
+employees.Clear();
+employees = null;
+
+	
+GC.Collect(); 
+
+
+Demo 7
+------
+
+
+public double CalculateWage()
+{
+	WageCalculations wageCalculations = new WageCalculations();
+
+	double calculateValue = wageCalculations.ComplexWageCalculation(wage, taxRate, 3, 42);
+
+	return calculateValue; 
+}
+
+
+double calculatedWage = bethany.CalculateWage();
+Console.WriteLine($"The estimated wage is {calculatedWage}.");

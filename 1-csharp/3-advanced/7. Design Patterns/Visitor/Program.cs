@@ -5,11 +5,12 @@ Console.Title = "Visitor";
 // create container & add concrete elements
 var container = new Container();
 
-container.Customers.Add(new Customer("Sophie", 500));
-container.Customers.Add(new Customer("Karen", 1000));
-container.Customers.Add(new Customer("Sven", 800));
-container.Employees.Add(new Employee("Kevin", 18));
-container.Employees.Add(new Employee("Tom", 5));
+container.Customers.Add(new Customer("Louna", 500));
+container.Customers.Add(new Customer("Veleenah", 500));
+container.Customers.Add(new Customer("Raoul", 1000));
+container.Customers.Add(new Customer("Natacha", 800));
+container.Employees.Add(new Employee("Jerodette", 18));
+container.Employees.Add(new Employee("Julie Duree", 5));
 
 // create visitor
 DiscountVisitor discountVisitor = new();
