@@ -1,0 +1,85 @@
+﻿@page
+@model Samples.Debugging.Web.WebUI.Pages.Expenses.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Expense</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Expense.ID" />
+            <div class="form-group">
+                <label asp-for="Expense.Description" class="control-label"></label>
+                <input asp-for="Expense.Description" class="form-control" />
+                <span asp-validation-for="Expense.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expense.DateIncurred" class="control-label"></label>
+                <input asp-for="Expense.DateIncurred" class="form-control" />
+                <span asp-validation-for="Expense.DateIncurred" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expense.Location" class="control-label"></label>
+                <input asp-for="Expense.Location" class="form-control" />
+                <span asp-validation-for="Expense.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Expense.Price" class="control-label"></label>
+                <input asp-for="Expense.Price" class="form-control" />
+                <span asp-validation-for="Expense.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Expense Categories</label>
+                <select asp-for="ExpenseTypeCategoryId" class="form-control"
+                asp-items="Model.ExpenseTypeCategoryList">
+                    <option value="0">-- Select Expense Type Category --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Expense.ExpenseTypeID" class="control-label"></label>
+                <select asp-for="Expense.ExpenseTypeID" class="form-control" 
+                asp-items="Model.ExpenseTypeList">
+                    <option value="">-- Select Expense Type --</option>
+                </select>
+                <span asp-validation-for="Expense.ExpenseTypeID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+$(document).ready(function () { 
+     $("#ExpenseTypeCategoryId").on("change", function(){
+            var categoryId = $(this).val();
+            var expenseTypeSelect = $("#Expense_ExpenseTypeID");
+            expenseTypeSelect.empty();
+            expenseTypeSelect.append("<option value=''>Select Subcategory</option>");
+            $.getJSON(`?handler=Categories&categoryId=${categoryId}`, (data) => {
+                $.each(data, function(i, item){
+                    expenseTypeSelect.append("<option value='" + item.id + "'>" + item.name + "</option>");
+                });
+            });
+     });
+});
+</script>
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

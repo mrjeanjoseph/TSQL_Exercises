@@ -1,0 +1,139 @@
+﻿@page
+@model Samples.Debugging.Web.WebUI.Pages.Expenses.IndexModel
+
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+<h1>Expenses</h1>
+
+<div class="row">
+    <div class="col-md-2 pb-4">
+        <a class="btn btn-primary form-control" asp-page="Create">Create New</a>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">Filter Expenses List</div>
+    <div class="card-body">
+        <form>
+            <div class="form-inline">
+                <div class="row p-2">
+                    <div class="col-md-1">
+                        <label for="SearchDescription">Name:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" asp-for="SearchDescription" />
+                    </div>
+                    <div class="col-md-1">
+                        <label for="SearchExpenseType">Expense Type:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" asp-for="SearchExpenseType" asp-items="Model.ExpenseTypeList">
+                         <option value="">All</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="SearchLocation">Location:</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" type="text" asp-for="SearchLocation" />
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-1">
+                        <label >Start Date:</label>
+                    </div>
+                    <div class="col-md-3">
+                         <input asp-for="SearchDateStart" class="form-control" />
+                    </div>
+                    <div class="col-md-1">
+                        <label >End Date:</label>
+                    </div>
+                    <div class="col-md-3">
+                         <input asp-for="SearchDateEnd" class="form-control" />
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-1">
+                        <label >Min Price:</label>
+                    </div>
+                    <div class="col-md-3">
+                         <input asp-for="SearchPriceMin" class="form-control" />
+                         <span asp-validation-for="SearchPriceMin" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-1">
+                        <label >Max Price:</label>
+                    </div>
+                    <div class="col-md-3">
+                         <input asp-for="SearchPriceMax" class="form-control" />
+                         <span asp-validation-for="SearchPriceMax" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        <input class="btn btn-primary form-control" type="submit" value="Filter" />
+                    </div>       
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].DateIncurred)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].ExpenseType.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expenses[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Expenses) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateIncurred)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-page="./Edit" class="btn btn-primary" asp-route-id="@item.ID">Edit</a> 
+                <a asp-page="./Details" class="btn btn-primary" asp-route-id="@item.ID">Details</a> 
+                <a asp-page="./Delete" class="btn btn-primary" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>@Html.DisplayFor(modelItem => Model.AmountTotal)</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

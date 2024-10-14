@@ -1,6 +1,5 @@
 ﻿namespace Interpreter;
 
-
 /// <summary>
 /// Context
 /// </summary>
@@ -68,7 +67,6 @@ public class RomanOneExpression : RomanExpression
             value.Output += "I";
             value.Input -= 1;
         }
-
     }
 }
 

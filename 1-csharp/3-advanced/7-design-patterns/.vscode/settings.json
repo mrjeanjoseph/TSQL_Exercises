@@ -5,6 +5,16 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true
+        "**/Thumbs.db": true,
+        "[!U]*/**": true,
+        "U[!n]*/**": true,
+        "Un[!i]*/**": true,
+        "Uni[!t]*/**": true,
+        "Unit[!O]*/**": true,
+        "UnitO[!f]*/**": true,
+        "UnitOf[!W]*/**": true,
+        "UnitOfW[!o]*/**": true,
+        "UnitOfWo[!r]*/**": true,
+        "UnitOfWor[!k]*/**": true
     }
 }

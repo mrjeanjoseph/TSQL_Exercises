@@ -1,0 +1,60 @@
+﻿@page
+@model Samples.Debugging.Web.WebUI.Pages.Expenses.ReportModel
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="card">
+    <div class="card-header">My Monthly Expense Report</div>
+    <div class="card-body">
+        <form>
+            <div class="form-inline">
+                <div class="row p-2">
+                    <div class="col-md-2 d-flex justify-content-end align-items-center">Choose Year:</div>
+                    <div class="col-md-1">
+                        <select asp-for="SelectedYear" class="form-control" asp-items="Model.YearList">
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-flex justify-content-end align-items-center">Choose Month:</div>
+                    <div class="col-md-2">
+                        <select asp-for="SelectedMonth" class="form-control" asp-items="Model.MonthList">
+                        </select>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2 d-flex justify-content-center">
+                        <input class="btn btn-primary form-control" type="submit" value="Run" />
+                    </div>  
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-5 d-flex justify-content-end align-items-center">Expenses Total:</div>
+                    <div class="col-md-2 d-flex justify-content-start align-items-center">@Html.DisplayFor(modelItem => Model.ExpenseTotal)</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@foreach (var item in Model.ExpenseSummaries) {
+    <div class="card p-2">
+        <div class="card-header">@item.ExpenseTypeCategoryName
+        </div>
+        <div class="card-body">
+            <div class="row p-1">
+                <div class="col-md-3">Expense Type</div>
+                <div class="col-md-2">Count</div>
+                <div class="col-md-2">Total</div>
+            </div>
+
+            @foreach (var summary in @item.Summaries)
+            {
+                <div class="row p-1 border-bottom">
+                    <div class="col-md-3">@Html.DisplayFor(modelItem => summary.ExpenseTypeName)</div>
+                    <div class="col-md-2">@Html.DisplayFor(modelItem => summary.ExpensesCount)</div>
+                    <div class="col-md-2">@Html.DisplayFor(modelItem => summary.ExpensesTotal)</div>
+                </div>
+            }
+            </div>
+    </div>
+}
+
+
