@@ -1,0 +1,134 @@
+Snippets Module 7
+-----------------
+
+
+BulkProduct
+public string ConvertToStringForSaving()
+{
+	return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};3;";
+}
+
+
+FreshProduct
+public string ConvertToStringForSaving()
+{
+	return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};2;";
+}
+
+
+
+RegularProduct
+public string ConvertToStringForSaving()
+{
+	return $"{Id};{Name};{Description};{maxItemsInStock};{Price.ItemPrice};{(int)Price.Currency};{(int)UnitType};4;";
+}
+
+
+-------------------------------------------------------------------------------------
+
+
+BulkProduct
+public override object Clone()
+{
+	return new BulkProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency },  this.maxItemsInStock);
+}
+
+
+
+FreshProduct
+public override object Clone()
+{
+	return new FreshProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.UnitType, this.maxItemsInStock);
+}
+
+
+RegularProduct
+public override object Clone()
+{
+	return new RegularProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.UnitType, this.maxItemsInStock);
+}
+
+
+-------------------------------------------------------------------------------------
+
+
+private static void ShowCloneExistingProduct()
+{
+	string? userSelection = string.Empty;
+	string? newId = string.Empty;
+
+	Console.Write("Enter the ID of product to clone: ");
+	string? selectedProductId = Console.ReadLine();
+
+	if (selectedProductId != null)
+	{
+		Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+
+		if (selectedProduct != null)
+		{
+			Console.Write("Enter the new ID of the cloned product: ");
+
+			newId = Console.ReadLine();
+
+			Product? p = selectedProduct.Clone() as Product;
+
+			if (p != null)
+			{
+				p.Id = int.Parse(newId);
+				inventory.Add(p);
+			}
+		}
+	}
+	else
+	{
+		Console.WriteLine("Non-existing product selected. Please try again.");
+	}
+}
+		
+		
+-------------------------------------------------------------------------------------
+		
+		
+public void SaveToFile(List<ISaveable> saveables)
+{
+	StringBuilder sb = new StringBuilder();
+	string path = $"{directory}{productsFileName}";
+
+	foreach (var item in saveables)
+	{
+		sb.Append(item.ConvertToStringForSaving());
+		sb.Append(Environment.NewLine);
+	}
+
+	File.WriteAllText(path, sb.ToString());
+
+	Console.ForegroundColor = ConsoleColor.Green;
+	Console.WriteLine("Saved items successfully");
+	Console.ResetColor();
+}
+
+
+-------------------------------------------------------------------------------------
+
+
+
+private static void SaveAllData()
+{
+	ProductRepository productRepository = new();
+
+	List<ISaveable> saveables = new List<ISaveable>();
+
+	foreach (var item in inventory)//now a list of Products
+	{
+		if (item is ISaveable)
+		{
+			saveables.Add(item as ISaveable);
+		}
+	}
+
+	productRepository.SaveToFile(saveables);
+
+	Console.ReadLine();
+	ShowMainMenu();
+}
+
