@@ -1,0 +1,1 @@
+﻿[assembly: Timeout(1000)]

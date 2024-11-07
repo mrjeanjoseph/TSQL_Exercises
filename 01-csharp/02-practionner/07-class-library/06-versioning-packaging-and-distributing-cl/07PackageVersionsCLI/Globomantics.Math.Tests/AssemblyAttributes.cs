@@ -1,0 +1,1 @@
+﻿[assembly: NUnit.Framework.Timeout(1000)]

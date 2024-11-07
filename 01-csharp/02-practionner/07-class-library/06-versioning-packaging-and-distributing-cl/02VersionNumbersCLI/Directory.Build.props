@@ -1,0 +1,7 @@
+<Project>
+ <ItemGroup>
+   <AssemblyAttribute Include="System.Reflection.AssemblyCopyrightAttribute">
+      <_Parameter1>Globomantics</_Parameter1>
+   </AssemblyAttribute>
+ </ItemGroup>
+</Project>
